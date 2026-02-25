@@ -1,0 +1,153 @@
+/* ================= RESET ================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  background: linear-gradient(-45deg, #0a0a0a, #111111, #0f0f0f, #141414);
+  background-size: 400% 400%;
+  animation: gradientMove 20s ease infinite;
+  overflow-x: hidden;
+}
+
+/* ================= TYPOGRAPHY ================= */
+
+h1 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+p {
+  font-weight: 400;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* ================= GLOBAL ELEMENTS ================= */
+
+a {
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+input,
+textarea {
+  font-family: 'Inter', sans-serif;
+  transition: all 0.25s ease;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================= SELECTION ================= */
+
+::selection {
+  background: #00b7ff;
+  color: white;
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00b7ff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0099cc;
+}
+
+/* ================= BACKGROUND ANIMATION ================= */
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================================================= */
+/* ================= RESPONSIVE ==================== */
+/* ================================================= */
+
+.hero-container,
+.about-container,
+.skills-container,
+.projects-container,
+.contact-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tablet */
+
+@media (max-width: 992px) {
+
+  .hero-container,
+  .about-container,
+  .contact-container {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  section {
+    padding: 80px 25px !important;
+  }
+
+  .hero-left h1 {
+    font-size: 32px !important;
+  }
+
+  .hero-left h2 {
+    font-size: 18px !important;
+  }
+
+  .image-wrapper {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+}
