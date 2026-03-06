@@ -1,4 +1,1 @@
-
-[live demo]: https://stay-scout.onrender.com
-
-features: user authentic and authorization
+# live demo: https://abdullah7.netlify.app
