@@ -27,7 +27,14 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = ["home", "about", "skills", "projects", "contact"];
+  const navItems = [
+    "home",
+    "about",
+    "skills",
+    "projects",
+    "contact",
+    "github"
+  ];
 
   return (
     <nav className={scrolled ? "navbar scrolled" : "navbar"}>
@@ -37,7 +44,13 @@ function Navbar() {
         {navItems.map((item) => (
           <li key={item}>
             <a
-              href={`#${item}`}
+              href={
+                item === "github"
+                  ? "https://github.com/abdullahdevjs"
+                  : `#${item}`
+              }
+              target={item === "github" ? "_blank" : "_self"}
+              rel="noreferrer"
               className={active === item ? "active" : ""}
               onClick={() => setMenuOpen(false)}
             >

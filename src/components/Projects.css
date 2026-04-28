@@ -15,6 +15,8 @@
   color: #00b7ff;
 }
 
+/* GRID */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -29,7 +31,6 @@
   overflow: hidden;
   border: 1px solid rgba(0, 183, 255, 0.12);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-  position: relative;
 }
 
 .project-card:hover {
@@ -85,7 +86,7 @@
   border-radius: 20px;
   font-size: 12px;
   border: 1px solid rgba(0, 183, 255, 0.25);
-  transition: background 0.3s ease;
+  transition: 0.3s;
 }
 
 .tech-stack span:hover {
@@ -96,8 +97,8 @@
 
 .project-links {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;   /* important for mobile */
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .project-links a {
@@ -107,6 +108,8 @@
   position: relative;
   padding-bottom: 3px;
 }
+
+/* underline animation */
 
 .project-links a::after {
   content: "";
@@ -123,14 +126,24 @@
   width: 100%;
 }
 
-/* STATUS */
+/* highlight Code button */
+
+.project-links a:last-child {
+  border: 1px solid #00b7ff;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+/* STATUS (In Progress) */
 
 .status {
+  display: inline-block;
   font-size: 13px;
-  color: #888;
+  color: #aaa;
   border: 1px solid #444;
   padding: 6px 14px;
   border-radius: 20px;
+  margin-top: 10px;
 }
 
 /* ================= RESPONSIVE ================= */
