@@ -1,59 +1,54 @@
-import { motion } from "framer-motion";
-import { Typewriter } from "react-simple-typewriter";
 import "./Hero.css";
+import { TypeAnimation } from "react-type-animation";
 
 function Hero() {
   return (
     <section className="hero" id="home">
       <div className="hero-container">
 
-        <motion.div
-          className="hero-left"
-          initial={{ opacity: 0, x: -80 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-        >
+        {/* LEFT */}
+        <div className="hero-left">
+
           <h1>
             Hi, I'm <span>Abdullah</span>
           </h1>
 
           <h2>
-            <Typewriter
-              words={[
+            <TypeAnimation
+              sequence={[
                 "Data Analyst",
-                "Python Developer",
-                "SQL Specialist",
-                "Web Enthusiast",
+                2000,
+                "Frontend Developer",
+                2000,
+                "React Developer",
+                2000,
               ]}
-              loop={true}
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1500}
+              speed={50}
+              repeat={Infinity}
             />
           </h2>
 
           <p>
-            B.Tech 3rd Year Student passionate about building data-driven
-            solutions and modern web applications.
+            I build data-driven solutions and modern web applications
+            with clean UI, strong logic, and scalable structure.
           </p>
 
-          <a href="#projects" className="hero-btn">
-            View Projects
-          </a>
-        </motion.div>
+          <div className="hero-buttons">
+            <a href="#projects" className="hero-btn">
+              View Projects
+            </a>
 
-        <motion.div
-          className="hero-right"
-          initial={{ opacity: 0, x: 80 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <div className="image-wrapper">
-            <img src="/profile.jpg" alt="profile" />
+            
           </div>
-        </motion.div>
+
+        </div>
+
+        {/* RIGHT */}
+        <div className="hero-right">
+          <div className="image-wrapper">
+            <img src="/profile.jpg" alt="Abdullah" />
+          </div>
+        </div>
 
       </div>
     </section>

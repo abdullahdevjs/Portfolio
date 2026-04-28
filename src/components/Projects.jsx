@@ -11,22 +11,27 @@ function Projects() {
 
           {/* ===== PROJECT 1 ===== */}
           <div className="project-card">
-            <img src="/project1.png" alt="Quiz App" />
+            <img src="/project1.png" alt="Quiz Application" />
 
             <div className="project-content">
               <h3>Quiz Application</h3>
 
               <p>
-                A responsive quiz application built with JavaScript.
-                Features multiple questions, score tracking, and dynamic UI updates.
+                A fully responsive quiz application built using React.
+                It includes a real-time timer, score tracking, and a detailed
+                result summary showing accuracy, attempted, and skipped questions.
               </p>
 
+              {/* Features */}
               <div className="tech-stack">
-                <span>HTML</span>
-                <span>CSS</span>
+                <span>React</span>
                 <span>JavaScript</span>
+                <span>Timer</span>
+                <span>Score Tracking</span>
+                <span>Accuracy</span>
               </div>
 
+              {/* Links */}
               <div className="project-links">
                 <a
                   href="https://quiz-1-6z6s.onrender.com/"
@@ -47,23 +52,24 @@ function Projects() {
             </div>
           </div>
 
-          {/* ===== PROJECT 2 (COMING SOON IMPROVED) ===== */}
+          {/* ===== PROJECT 2 ===== */}
           <div className="project-card">
-            <img src="/project2.jpg" alt="Upcoming Project" />
+            <img src="/project2.jpg" alt="Student Survey Analysis" />
 
             <div className="project-content">
               <h3>Student Survey Analysis (In Progress)</h3>
 
               <p>
-                Data analytics project focused on analyzing student behavior
-                using Python, SQL, and visualization tools.
-                Currently under development.
+                A data analytics project focused on analyzing student responses
+                using Python, SQL, and Excel to generate meaningful insights
+                and visual reports.
               </p>
 
               <div className="tech-stack">
                 <span>Python</span>
                 <span>SQL</span>
                 <span>Excel</span>
+                <span>Data Analysis</span>
               </div>
 
               <div className="status">

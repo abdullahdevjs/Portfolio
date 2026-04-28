@@ -179,3 +179,14 @@
   }
 
 }
+/* outline button */
+
+.hero-btn.outline {
+  background: transparent;
+  border: 1px solid #00b7ff;
+}
+
+.hero-btn.outline:hover {
+  background: #00b7ff;
+  color: black;
+}
