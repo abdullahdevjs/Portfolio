@@ -1,87 +1,508 @@
+import { useState } from "react";
 import "./Projects.css";
 
+
+const projects = [
+  {
+    number: "01",
+    category: "DATA ANALYTICS",
+    title: "AI Finance Dashboard",
+
+    description:
+      "A finance analytics dashboard designed to transform financial data into clear, actionable insights through interactive visualizations and structured analysis.",
+
+    image: "/finance-dashboard.png",
+
+    technologies: [
+      "Python",
+      "Data Analysis",
+      "SQL",
+      "Analytics",
+    ],
+
+    status: "COMPLETED",
+
+    featured: true,
+
+    github:
+      "https://github.com/abdullahdevjs/Portfolio",
+  },
+
+
+  {
+    number: "02",
+    category: "WEB APPLICATION",
+    title: "Online Quiz Application",
+
+    description:
+      "A responsive quiz platform focused on structured question handling, user interaction and a clean assessment experience.",
+
+    image: "/quiz.png",
+
+    technologies: [
+      "React",
+      "JavaScript",
+      "CSS",
+      "GitHub",
+    ],
+
+    status: "COMPLETED",
+
+    featured: false,
+
+    github:
+      "https://github.com/abdullahdevjs/quiz",
+  },
+
+
+  {
+    number: "03",
+    category: "MACHINE LEARNING",
+    title: "Financial Fraud Detection System",
+
+    description:
+      "A machine learning based system currently in development, focused on identifying suspicious financial transactions through data preprocessing, feature analysis and predictive modelling.",
+
+    image:
+      "/fraud-detection-blueprint.png",
+
+    technologies: [
+      "Python",
+      "Machine Learning",
+      "Data Analysis",
+      "Predictive Modelling",
+    ],
+
+    status: "IN DEVELOPMENT",
+
+    featured: false,
+
+    github: null,
+  },
+];
+
+
 function Projects() {
+
+  const [imageErrors, setImageErrors] =
+    useState({});
+
+
+  const handleImageError = (number) => {
+
+    setImageErrors((previous) => ({
+      ...previous,
+      [number]: true,
+    }));
+
+  };
+
+
   return (
-    <section className="projects" id="projects">
-      <div className="projects-container">
+    <section
+      className="projects-section"
+      id="projects"
+    >
 
-        <h2>Projects</h2>
+      <div className="container">
 
-        <div className="projects-grid">
 
-          {/* ===== PROJECT 1 ===== */}
-          <div className="project-card">
-            <img src="/project1.png" alt="Quiz Application" />
+        {/* =================================================
+            HEADER
+        ================================================= */}
 
-            <div className="project-content">
-              <h3>Quiz Application</h3>
+        <div
+          className="projects-header"
+          data-reveal-item
+        >
 
-              <p>
-                A fully responsive quiz application built using React.
-                It includes a real-time timer, score tracking, and a detailed
-                result summary showing accuracy, attempted, and skipped questions.
-              </p>
+          <div className="projects-heading-left">
 
-              {/* Features */}
-              <div className="tech-stack">
-                <span>React</span>
-                <span>JavaScript</span>
-                <span>Timer</span>
-                <span>Score Tracking</span>
-                <span>Accuracy</span>
-              </div>
+            <span className="section-label">
+              Selected Work
+            </span>
 
-              {/* Links */}
-              <div className="project-links">
-                <a
-                  href="https://quiz-1-6z6s.onrender.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Live
-                </a>
 
-                <a
-                  href="https://github.com/abdullahdevjs/quiz"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Code
-                </a>
-              </div>
-            </div>
+            <h2 className="section-title">
+
+              Projects built around
+
+              <span className="gradient-text">
+                {" "}real problems.
+              </span>
+
+            </h2>
+
           </div>
 
-          {/* ===== PROJECT 2 ===== */}
-          <div className="project-card">
-            <img src="/project2.jpg" alt="Student Survey Analysis" />
 
-            <div className="project-content">
-              <h3>Student Survey Analysis (In Progress)</h3>
+          <div className="projects-heading-right">
 
-              <p>
-                A data analytics project focused on analyzing student responses
-                using Python, SQL, and Excel to generate meaningful insights
-                and visual reports.
-              </p>
+            <span>
+              04 / PROJECTS
+            </span>
 
-              <div className="tech-stack">
-                <span>Python</span>
-                <span>SQL</span>
-                <span>Excel</span>
-                <span>Data Analysis</span>
-              </div>
+            <p>
+              A collection of practical projects where I
+              apply programming, data analysis and software
+              development concepts to build useful solutions.
+            </p>
 
-              <div className="status">
-                In Progress
-              </div>
-            </div>
           </div>
 
         </div>
+
+
+        {/* =================================================
+            PROJECT SYSTEM
+        ================================================= */}
+
+        <div className="projects-system">
+
+
+          {/* =================================================
+              VERTICAL CONNECTION LINE
+          ================================================= */}
+
+          <div
+            className="projects-main-line"
+            aria-hidden="true"
+          >
+
+            <span></span>
+
+          </div>
+
+
+          {/* =================================================
+              PROJECTS
+          ================================================= */}
+
+          {projects.map((project, index) => (
+
+            <article
+              key={project.number}
+              className={`
+                project-card
+                ${project.featured
+                  ? "project-featured"
+                  : ""
+                }
+                ${project.status ===
+                  "IN DEVELOPMENT"
+                  ? "project-development"
+                  : ""
+                }
+              `}
+              data-reveal-item
+              style={{
+                "--project-delay":
+                  `${index * 120}ms`,
+              }}
+            >
+
+
+              {/* ===========================================
+                  PROJECT NODE
+              =========================================== */}
+
+              <div className="project-node">
+
+                <span>
+                  {project.number}
+                </span>
+
+              </div>
+
+
+              {/* ===========================================
+                  PROJECT MEDIA
+              =========================================== */}
+
+              <div className="project-media">
+
+                {!imageErrors[project.number] ? (
+
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="project-image"
+                    loading={
+                      index === 0
+                        ? "eager"
+                        : "lazy"
+                    }
+                    onError={() =>
+                      handleImageError(
+                        project.number
+                      )
+                    }
+                  />
+
+                ) : (
+
+                  <div className="project-image-fallback">
+
+                    <span>
+                      {project.number}
+                    </span>
+
+                    <strong>
+                      {project.category}
+                    </strong>
+
+                    <small>
+                      PROJECT PREVIEW
+                    </small>
+
+                  </div>
+
+                )}
+
+
+                <div className="project-image-gradient"></div>
+
+
+                {/* CATEGORY */}
+
+                <span className="project-media-category">
+                  {project.category}
+                </span>
+
+
+                {/* STATUS */}
+
+                <span
+                  className={`
+                    project-status
+                    ${
+                      project.status ===
+                      "COMPLETED"
+                        ? "status-completed"
+                        : "status-development"
+                    }
+                  `}
+                >
+
+                  <span></span>
+
+                  {project.status}
+
+                </span>
+
+
+                {/* VIEW SOURCE */}
+
+                {project.github && (
+
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-view"
+                  >
+
+                    View source
+
+                    <b>
+                      ↗
+                    </b>
+
+                  </a>
+
+                )}
+
+              </div>
+
+
+              {/* ===========================================
+                  PROJECT BODY
+              =========================================== */}
+
+              <div className="project-body">
+
+
+                {/* META */}
+
+                <div className="project-meta">
+
+                  <span className="project-category">
+                    {project.category}
+                  </span>
+
+
+                  {project.featured && (
+
+                    <span className="featured-badge">
+                      FEATURED PROJECT
+                    </span>
+
+                  )}
+
+                </div>
+
+
+                {/* TITLE */}
+
+                <h3 className="project-title">
+                  {project.title}
+                </h3>
+
+
+                {/* DESCRIPTION */}
+
+                <p className="project-description">
+                  {project.description}
+                </p>
+
+
+                {/* TECHNOLOGIES */}
+
+                <div className="project-technologies">
+
+                  {project.technologies.map(
+                    (technology) => (
+
+                      <span key={technology}>
+                        {technology}
+                      </span>
+
+                    )
+                  )}
+
+                </div>
+
+
+                {/* FOOTER */}
+
+                <div className="project-footer">
+
+
+                  {project.github ? (
+
+                    <>
+
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="
+                          project-action
+                          primary-action
+                        "
+                      >
+
+                        GitHub
+
+                        <span className="action-arrow">
+                          ↗
+                        </span>
+
+                      </a>
+
+
+                      <span
+                        className="
+                          project-action
+                          secondary-action
+                        "
+                      >
+                        Source available
+                      </span>
+
+                    </>
+
+                  ) : (
+
+                    <span
+                      className="
+                        project-action
+                        development-action
+                      "
+                    >
+
+                      <span className="development-dot"></span>
+
+                      Research & development
+                      in progress
+
+                    </span>
+
+                  )}
+
+                </div>
+
+              </div>
+
+            </article>
+
+          ))}
+
+        </div>
+
+
+        {/* =================================================
+            NEXT DIRECTION
+        ================================================= */}
+
+        <div
+          className="projects-next"
+          data-reveal-item
+        >
+
+          <div className="projects-next-content">
+
+            <span className="section-label">
+              What's Next
+            </span>
+
+
+            <h3>
+
+              From analytics to
+
+              <span>
+                intelligent systems.
+              </span>
+
+            </h3>
+
+
+            <p>
+              My next stage is focused on strengthening
+              machine learning fundamentals and applying
+              them to practical data-driven problems.
+            </p>
+
+          </div>
+
+
+          <div
+            className="projects-next-visual"
+            aria-hidden="true"
+          >
+
+            <span className="next-line"></span>
+
+            <span className="next-node node-one"></span>
+
+            <span className="next-node node-two"></span>
+
+            <span className="next-node node-three"></span>
+
+            <span className="next-label">
+              ML
+            </span>
+
+          </div>
+
+        </div>
+
       </div>
+
     </section>
   );
 }
+
 
 export default Projects;

@@ -1,153 +1,482 @@
-/* ================= RESET ================= */
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
 
-* {
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap");
+
+
+:root {
+  --bg: #05090d;
+  --bg-soft: #060b10;
+
+  --text: #cbd6da;
+  --text-soft: #7b8a91;
+  --text-muted: #52616a;
+
+  --accent: #55d6be;
+
+  --border: rgba(255, 255, 255, 0.055);
+
+  --ease: cubic-bezier(
+    0.22,
+    1,
+    0.36,
+    1
+  );
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
+
 
 html {
   scroll-behavior: smooth;
+
+  background:
+    var(--bg);
 }
+
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: #ffffff;
-  background: linear-gradient(-45deg, #0a0a0a, #111111, #0f0f0f, #141414);
-  background-size: 400% 400%;
-  animation: gradientMove 20s ease infinite;
-  overflow-x: hidden;
-}
+  min-width: 320px;
+  min-height: 100vh;
 
-/* ================= TYPOGRAPHY ================= */
+  margin: 0;
 
-h1 {
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
+  background:
+    var(--bg);
 
-h2 {
-  font-weight: 600;
-  letter-spacing: -0.3px;
-}
+  color:
+    var(--text);
 
-h3 {
-  font-weight: 600;
-}
+  font-family:
+    "Space Grotesk",
+    sans-serif;
 
-p {
   font-weight: 400;
-  line-height: 1.6;
-  color: #ccc;
+
+  -webkit-font-smoothing: antialiased;
+
+  text-rendering: optimizeLegibility;
 }
 
-/* ================= GLOBAL ELEMENTS ================= */
 
-a {
-  text-decoration: none;
-  transition: all 0.25s ease;
+/* =========================================================
+   ROOT
+========================================================= */
+
+#root {
+  min-height: 100vh;
+
+  width: 100%;
 }
 
-button {
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
 
-input,
-textarea {
-  font-family: 'Inter', sans-serif;
-  transition: all 0.25s ease;
-}
-
-section {
-  position: relative;
-  z-index: 1;
-}
-
-/* ================= SELECTION ================= */
+/* =========================================================
+   SELECTION
+========================================================= */
 
 ::selection {
-  background: #00b7ff;
-  color: white;
+  color:
+    #06100f;
+
+  background:
+    var(--accent);
 }
 
-/* ================= SCROLLBAR ================= */
+
+::-moz-selection {
+  color:
+    #06100f;
+
+  background:
+    var(--accent);
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   BUTTONS / INPUTS
+========================================================= */
+
+button,
+input,
+textarea,
+select {
+  font:
+    inherit;
+}
+
+
+/* =========================================================
+   IMAGES
+========================================================= */
+
+img {
+  max-width: 100%;
+
+  display: block;
+}
+
+
+/* =========================================================
+   LISTS
+========================================================= */
+
+ul,
+ol {
+  list-style: none;
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   PARAGRAPHS
+========================================================= */
+
+p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+  width:
+    min(
+      calc(100% - 64px),
+      1380px
+    );
+
+  margin:
+    0 auto;
+}
+
+
+/* =========================================================
+   SECTION LABEL
+========================================================= */
+
+.section-label {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  color:
+    #435159;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    0.34rem;
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.section-label::before {
+  content:
+    "";
+
+  width:
+    5px;
+
+  height:
+    5px;
+
+  border:
+    1px solid
+    rgba(85, 214, 190, 0.25);
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(85, 214, 190, 0.08);
+}
+
+
+/* =========================================================
+   GRADIENT TEXT
+========================================================= */
+
+.gradient-text {
+  color:
+    var(--accent);
+
+  background:
+    linear-gradient(
+      110deg,
+      #55d6be 0%,
+      #8bb9b1 45%,
+      #667b80 100%
+    );
+
+  -webkit-background-clip:
+    text;
+
+  background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width:
+    7px;
+
+  height:
+    7px;
 }
+
 
 ::-webkit-scrollbar-track {
-  background: #111;
+  background:
+    #04080b;
 }
+
 
 ::-webkit-scrollbar-thumb {
-  background: #00b7ff;
-  border-radius: 10px;
+  border-radius:
+    10px;
+
+  background:
+    #1a292f;
 }
+
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0099cc;
+  background:
+    #294148;
 }
 
-/* ================= BACKGROUND ANIMATION ================= */
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Firefox */
+
+html {
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    #1a292f
+    #04080b;
 }
 
-/* ================================================= */
-/* ================= RESPONSIVE ==================== */
-/* ================================================= */
 
-.hero-container,
-.about-container,
-.skills-container,
-.projects-container,
-.contact-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+[data-reveal-item] {
+  opacity:
+    0;
+
+  transform:
+    translateY(35px);
+
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
 }
 
-/* Tablet */
 
-@media (max-width: 992px) {
+[data-reveal-item].is-visible {
+  opacity:
+    1;
 
-  .hero-container,
-  .about-container,
-  .contact-container {
-    flex-direction: column !important;
-    gap: 40px !important;
+  transform:
+    translateY(0);
+}
+
+
+/* =========================================================
+   REVEAL DELAYS
+========================================================= */
+
+[data-reveal-item]:nth-child(1) {
+  transition-delay:
+    0ms;
+}
+
+
+[data-reveal-item]:nth-child(2) {
+  transition-delay:
+    80ms;
+}
+
+
+[data-reveal-item]:nth-child(3) {
+  transition-delay:
+    160ms;
+}
+
+
+[data-reveal-item]:nth-child(4) {
+  transition-delay:
+    240ms;
+}
+
+
+[data-reveal-item]:nth-child(5) {
+  transition-delay:
+    320ms;
+}
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
+
+body {
+  overflow-x:
+    hidden;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+:focus-visible {
+  outline:
+    1px solid
+    rgba(85, 214, 190, 0.45);
+
+  outline-offset:
+    4px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .container {
+    width:
+      min(
+        calc(100% - 36px),
+        1380px
+      );
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr !important;
+
+  [data-reveal-item] {
+    transform:
+      translateY(25px);
+
+    transition-duration:
+      0.75s;
   }
 
 }
 
-/* Mobile */
 
-@media (max-width: 768px) {
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-  section {
-    padding: 80px 25px !important;
+@media (max-width: 380px) {
+
+  .container {
+    width:
+      calc(100% - 30px);
   }
 
-  .hero-left h1 {
-    font-size: 32px !important;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior:
+      auto;
   }
 
-  .hero-left h2 {
-    font-size: 18px !important;
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
   }
 
-  .image-wrapper {
-    width: 200px !important;
-    height: 200px !important;
+
+  [data-reveal-item] {
+    opacity:
+      1;
+
+    transform:
+      none;
   }
 
 }

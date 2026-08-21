@@ -1,64 +1,811 @@
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .footer {
-  background: #0a0a0a;
-  padding: 60px 100px 30px;
-  border-top: 1px solid rgba(0,183,255,0.15);
+  position: relative;
+  width: 100%;
+
+  padding: 85px 0 35px;
+
+  background: #05090d;
+  color: #cbd6da;
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+
+  overflow: hidden;
+  isolation: isolate;
 }
 
-.footer-container {
-  display: flex;
-  justify-content: space-between;
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.footer::before {
+  content: "";
+
+  position: absolute;
+
+  width: 700px;
+  height: 400px;
+
+  left: 50%;
+  bottom: -330px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(85,214,190,0.055),
+      transparent 70%
+    );
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   FOOTER TOP
+========================================================= */
+
+.footer-top {
+  display: grid;
+
+  grid-template-columns:
+    1.1fr
+    1fr
+    auto;
+
   align-items: center;
-  margin-bottom: 40px;
+
+  gap: 70px;
 }
 
-.footer-left h3 {
-  color: #00b7ff;
-  margin-bottom: 6px;
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.footer-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+
+  text-decoration: none;
 }
 
-.footer-left p {
-  color: #aaa;
-  font-size: 14px;
+
+.footer-mark {
+  width: 52px;
+  height: 52px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid
+    rgba(85,214,190,0.25);
+
+  border-radius: 9px;
+
+  background:
+    rgba(85,214,190,0.035);
+
+  color: #55d6be;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.72rem;
+
+  font-weight: 500;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
+
+
+.footer-brand:hover .footer-mark {
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(85,214,190,0.45);
+
+  background:
+    rgba(85,214,190,0.06);
+
+  box-shadow:
+    0 15px 40px
+    rgba(85,214,190,0.08);
+}
+
+
+/* =========================================================
+   BRAND TEXT
+========================================================= */
+
+.footer-brand-text {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.footer-brand-text strong {
+  color: #aebbc0;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size: 1.05rem;
+
+  font-weight: 500;
+
+  line-height: 1.2;
+}
+
+
+.footer-brand-text span {
+  color: #5c6d74;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.1em;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.footer-message {
+  max-width: 430px;
+
+  margin: 0;
+
+  color: #72828a;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size: 0.82rem;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.footer-back-top {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 17px;
+
+  border:
+    1px solid
+    rgba(255,255,255,0.1);
+
+  border-radius: 7px;
+
+  background:
+    rgba(255,255,255,0.015);
+
+  color: #718188;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.58rem;
+
+  white-space: nowrap;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.footer-back-top b {
+  font-size: 1rem;
+
+  font-weight: 400;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.footer-back-top:hover {
+  transform:
+    translateY(-4px);
+
+  color: #55d6be;
+
+  border-color:
+    rgba(85,214,190,0.3);
+
+  background:
+    rgba(85,214,190,0.035);
+}
+
+
+.footer-back-top:hover b {
+  transform:
+    translateY(-4px);
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 55px 0 30px;
+
+  background:
+    rgba(255,255,255,0.07);
+}
+
+
+/* =========================================================
+   FOOTER MAIN
+========================================================= */
+
+.footer-main {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    auto;
+
+  align-items: center;
+
+  gap: 50px;
+}
+
+
+/* =========================================================
+   COPYRIGHT
+========================================================= */
+
+.footer-copy {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: #56676e;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.52rem;
+}
+
+
+.footer-copy p {
+  margin: 0;
+
+  color: #56676e;
+
+  font-size: 0.52rem;
+}
+
+
+/* =========================================================
+   FOOTER LINKS
+========================================================= */
 
 .footer-links {
   display: flex;
-  gap: 30px;
+
+  align-items: center;
+
+  gap: 32px;
 }
+
 
 .footer-links a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #697980;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.56rem;
+
   text-decoration: none;
-  color: #ccc;
-  font-size: 14px;
-  transition: 0.3s;
+
+  transition:
+    color 0.25s ease,
+    transform 0.3s ease;
 }
+
+
+.footer-links a span {
+  font-size: 0.85rem;
+
+  transition:
+    transform 0.3s ease;
+}
+
 
 .footer-links a:hover {
-  color: #00b7ff;
+  color: #55d6be;
+
+  transform:
+    translateY(-3px);
 }
+
+
+.footer-links a:hover span {
+  transform:
+    translate(2px,-2px);
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.footer-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color: #5b6c73;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.5rem;
+
+  white-space: nowrap;
+}
+
+
+.footer-status-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #55d6be;
+
+  box-shadow:
+    0 0 12px
+    rgba(85,214,190,0.5);
+
+  animation:
+    footerPulse 2s
+    ease-in-out infinite;
+}
+
+
+@keyframes footerPulse {
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
 
 .footer-bottom {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-top: 50px;
+
+  padding-top: 25px;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,0.045);
+
+  color: #43535a;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.45rem;
+
+  letter-spacing: 0.08em;
+
   text-align: center;
-  color: #777;
-  font-size: 13px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
+
+.footer-bottom-line {
+  width: 25px;
+  height: 1px;
+
+  background:
+    rgba(255,255,255,0.1);
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1400px) {
+
   .footer {
-    padding: 50px 30px 20px;
+    padding-top: 95px;
   }
 
-  .footer-container {
-    flex-direction: column;
-    gap: 30px;
-    text-align: center;
+
+  .footer-brand-text strong {
+    font-size: 1.12rem;
   }
+
+
+  .footer-brand-text span {
+    font-size: 0.6rem;
+  }
+
+
+  .footer-message {
+    font-size: 0.86rem;
+  }
+
+
+  .footer-links a {
+    font-size: 0.58rem;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .footer-top {
+    grid-template-columns:
+      1fr
+      auto;
+
+    gap: 30px;
+  }
+
+
+  .footer-message {
+    display: none;
+  }
+
+
+  .footer-main {
+    grid-template-columns:
+      1fr
+      auto;
+
+    gap: 30px;
+  }
+
+
+  .footer-status {
+    grid-column:
+      1 / -1;
+
+    justify-self: start;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .footer {
+    padding:
+      60px 0
+      25px;
+  }
+
+
+  .footer-top {
+    grid-template-columns:
+      1fr
+      auto;
+
+    gap: 20px;
+  }
+
+
+  .footer-mark {
+    width: 44px;
+    height: 44px;
+
+    font-size: 0.6rem;
+  }
+
+
+  .footer-brand {
+    gap: 12px;
+  }
+
+
+  .footer-brand-text {
+    gap: 5px;
+  }
+
+
+  .footer-brand-text strong {
+    font-size: 0.8rem;
+  }
+
+
+  .footer-brand-text span {
+    font-size: 0.43rem;
+  }
+
+
+  .footer-back-top {
+    padding:
+      10px 12px;
+
+    font-size: 0.48rem;
+  }
+
+
+  .footer-back-top b {
+    font-size: 0.8rem;
+  }
+
+
+  .footer-divider {
+    margin:
+      40px 0
+      25px;
+  }
+
+
+  .footer-main {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+
+  .footer-copy {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 5px;
+
+    font-size: 0.44rem;
+  }
+
+
+  .footer-copy p {
+    font-size: 0.44rem;
+  }
+
 
   .footer-links {
     flex-wrap: wrap;
-    justify-content: center;
+
+    gap: 22px;
   }
+
+
+  .footer-links a {
+    font-size: 0.47rem;
+  }
+
+
+  .footer-links a span {
+    font-size: 0.7rem;
+  }
+
+
+  .footer-status {
+    grid-column: auto;
+
+    font-size: 0.43rem;
+  }
+
+
+  .footer-status-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+
+  .footer-bottom {
+    margin-top: 38px;
+
+    padding-top: 20px;
+
+    font-size: 0.36rem;
+
+    line-height: 1.6;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .footer-brand-text strong {
+    font-size: 0.73rem;
+  }
+
+
+  .footer-brand-text span {
+    font-size: 0.38rem;
+  }
+
+
+  .footer-mark {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .footer-back-top {
+    font-size: 0.43rem;
+  }
+
+
+  .footer-links {
+    gap: 16px;
+  }
+
+
+  .footer-links a {
+    font-size: 0.43rem;
+  }
+
+
+  .footer-status {
+    font-size: 0.39rem;
+  }
+
+
+  .footer-bottom {
+    font-size: 0.32rem;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 340px) {
+
+  .footer-top {
+    gap: 12px;
+  }
+
+
+  .footer-brand-text strong {
+    font-size: 0.67rem;
+  }
+
+
+  .footer-brand-text span {
+    font-size: 0.34rem;
+  }
+
+
+  .footer-mark {
+    width: 37px;
+    height: 37px;
+  }
+
+
+  .footer-back-top {
+    padding:
+      8px 9px;
+
+    font-size: 0.4rem;
+  }
+
+
+  .footer-links {
+    gap: 13px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .footer-status-dot {
+    animation: none;
+  }
+
+
+  .footer-mark,
+  .footer-back-top,
+  .footer-links a {
+    transition: none;
+  }
+
 }

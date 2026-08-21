@@ -1,9 +1,308 @@
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
 .scroll-progress {
   position: fixed;
+
+  top: 50%;
+  right: 28px;
+
+  width: 90px;
+
+  transform: translateY(-50%);
+
+  z-index: 100;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.scroll-progress-track {
+  position: relative;
+
+  width: 1px;
+  height: 250px;
+
+  margin-left: auto;
+  margin-right: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   PROGRESS FILL
+========================================================= */
+
+.scroll-progress-fill {
+  position: absolute;
+
   top: 0;
   left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #00b7ff, #0066ff);
-  z-index: 9999;
-  transition: width 0.1s ease;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--accent),
+      rgba(85, 214, 190, 0.35)
+    );
+
+  box-shadow:
+    0 0 8px
+    rgba(85, 214, 190, 0.35);
+
+  transition:
+    height 0.12s linear;
+}
+
+
+/* =========================================================
+   NODE
+========================================================= */
+
+.scroll-progress-node {
+  position: absolute;
+
+  right: -4px;
+
+  width: 9px;
+  height: 9px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  transform:
+    translateY(-50%);
+
+  appearance: none;
+}
+
+
+/* =========================================================
+   NODE POSITIONS
+========================================================= */
+
+.scroll-progress-node:nth-of-type(1) {
+  top: 0%;
+}
+
+.scroll-progress-node:nth-of-type(2) {
+  top: 25%;
+}
+
+.scroll-progress-node:nth-of-type(3) {
+  top: 50%;
+}
+
+.scroll-progress-node:nth-of-type(4) {
+  top: 75%;
+}
+
+.scroll-progress-node:nth-of-type(5) {
+  top: 100%;
+}
+
+
+/* =========================================================
+   DOT
+========================================================= */
+
+.scroll-progress-dot {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  border: 1px solid
+    rgba(125, 139, 149, 0.8);
+
+  border-radius: 50%;
+
+  background:
+    var(--bg);
+
+  transform:
+    translate(-50%, -50%);
+
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   ACTIVE DOT
+========================================================= */
+
+.scroll-progress-node.is-active
+.scroll-progress-dot {
+  width: 9px;
+  height: 9px;
+
+  border-color:
+    var(--accent);
+
+  background:
+    var(--accent);
+
+  box-shadow:
+    0 0 0 4px
+      rgba(85, 214, 190, 0.06),
+    0 0 14px
+      rgba(85, 214, 190, 0.45);
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.scroll-progress-label {
+  position: absolute;
+
+  right: 18px;
+  top: 50%;
+
+  color: #4e5b66;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.42rem;
+
+  letter-spacing: 0.08em;
+
+  white-space: nowrap;
+
+  opacity: 0;
+
+  transform:
+    translateY(-50%)
+    translateX(5px);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* =========================================================
+   SHOW LABEL
+========================================================= */
+
+.scroll-progress-node.is-active
+.scroll-progress-label {
+  color: #73827f;
+
+  opacity: 1;
+
+  transform:
+    translateY(-50%)
+    translateX(0);
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .scroll-progress-node:hover
+  .scroll-progress-dot {
+    width: 8px;
+    height: 8px;
+
+    border-color:
+      var(--accent);
+
+    background:
+      rgba(85, 214, 190, 0.3);
+
+    box-shadow:
+      0 0 10px
+      rgba(85, 214, 190, 0.3);
+  }
+
+  .scroll-progress-node:hover
+  .scroll-progress-label {
+    color: var(--accent);
+
+    opacity: 1;
+
+    transform:
+      translateY(-50%)
+      translateX(0);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .scroll-progress {
+    right: 17px;
+
+    width: 60px;
+  }
+
+  .scroll-progress-label {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .scroll-progress {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .scroll-progress-fill,
+  .scroll-progress-dot,
+  .scroll-progress-label {
+    transition: none !important;
+  }
+
 }
