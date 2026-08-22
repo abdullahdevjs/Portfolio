@@ -1,463 +1,817 @@
 import "./Hero.css";
 
+import {
+  FiArrowDown,
+  FiArrowUpRight,
+  FiDatabase,
+  FiLayers,
+  FiMail,
+  FiTerminal,
+  FiTrendingUp,
+} from "react-icons/fi";
+
+import { motion } from "framer-motion";
+
+/* =========================================================
+   HERO DATA
+   ========================================================= */
+
+const technicalSignals = [
+  {
+    label: "DATA",
+    value: "01",
+  },
+  {
+    label: "ANALYTICS",
+    value: "02",
+  },
+  {
+    label: "MACHINE LEARNING",
+    value: "03",
+  },
+  {
+    label: "AI",
+    value: "04",
+  },
+];
+
+
+const stack = [
+  "Python",
+  "SQL",
+  "Pandas",
+  "NumPy",
+  "Excel",
+  "Git",
+];
+
+
+const pipeline = [
+  {
+    number: "01",
+    label: "DATA",
+    detail: "COLLECT",
+  },
+  {
+    number: "02",
+    label: "CLEAN",
+    detail: "PREPARE",
+  },
+  {
+    number: "03",
+    label: "ANALYSE",
+    detail: "EXPLORE",
+  },
+  {
+    number: "04",
+    label: "MODEL",
+    detail: "LEARN",
+  },
+  {
+    number: "05",
+    label: "INSIGHT",
+    detail: "DECIDE",
+  },
+];
+
+
+/* =========================================================
+   HERO COMPONENT
+   ========================================================= */
+
 function Hero() {
+
+  const scrollToSection = (sectionId) => {
+
+    const target =
+      document.getElementById(sectionId);
+
+    if (!target) {
+      return;
+    }
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+
   return (
+
     <section
       className="hero"
       id="home"
     >
 
-      {/* =================================================
-          BACKGROUND SYSTEM
-      ================================================= */}
+      {/* ===================================================
+          TECHNICAL BACKGROUND
+      =================================================== */}
 
-      <div className="hero-grid"></div>
+      <div
+        className="hero-background"
+        aria-hidden="true"
+      >
 
-      <div className="hero-glow hero-glow-one"></div>
+        <div className="hero-grid" />
 
-      <div className="hero-glow hero-glow-two"></div>
+        <div
+          className="hero-vertical-line hero-line-left"
+        />
 
-      <div className="hero-noise"></div>
+        <div
+          className="hero-vertical-line hero-line-center"
+        />
+
+        <div
+          className="hero-vertical-line hero-line-right"
+        />
+
+        <div
+          className="hero-horizontal-line hero-h-line-one"
+        />
+
+        <div
+          className="hero-horizontal-line hero-h-line-two"
+        />
 
 
-      {/* =================================================
-          HERO CONTAINER
-      ================================================= */}
+        {/* =================================================
+            DATA / AI NETWORK
+        ================================================= */}
+
+        <div className="hero-network">
+
+          <span
+            className="hero-network-node node-one"
+          />
+
+          <span
+            className="hero-network-node node-two"
+          />
+
+          <span
+            className="hero-network-node node-three"
+          />
+
+          <span
+            className="hero-network-node node-four"
+          />
+
+          <span
+            className="hero-network-node node-five"
+          />
+
+
+          <span
+            className="hero-network-link link-one"
+          />
+
+          <span
+            className="hero-network-link link-two"
+          />
+
+          <span
+            className="hero-network-link link-three"
+          />
+
+          <span
+            className="hero-network-link link-four"
+          />
+
+        </div>
+
+
+        {/* =================================================
+            AMBIENT GLOW
+        ================================================= */}
+
+        <div
+          className="hero-glow hero-glow-one"
+        />
+
+        <div
+          className="hero-glow hero-glow-two"
+        />
+
+      </div>
+
+
+      {/* ===================================================
+          MAIN CONTAINER
+      =================================================== */}
 
       <div className="container hero-container">
 
 
         {/* =================================================
-            LEFT CONTENT
+            TOP SYSTEM BAR
         ================================================= */}
 
-        <div
-          className="hero-content"
-          data-reveal-item
+        <motion.div
+          className="hero-system-bar"
+
+          initial={{
+            opacity: 0,
+            y: -10,
+          }}
+
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+
+          transition={{
+            duration: 0.65,
+          }}
         >
 
-          {/* STATUS */}
+          <div className="hero-system-left">
 
-          <div className="hero-status">
-
-            <span className="status-dot"></span>
+            <FiTerminal />
 
             <span>
-              Available for opportunities
+              PERSONAL SYSTEM / 2026
             </span>
 
           </div>
 
 
-          {/* EYEBROW */}
+          <div className="hero-system-center">
 
-          <p className="hero-eyebrow">
-            4TH YEAR B.TECH CSE
-            <span>·</span>
-            ASPIRING DATA SCIENTIST
-          </p>
+            <span />
 
-
-          {/* NAME */}
-
-          <div className="hero-name">
-
-            <span className="hero-name-label">
-              I'M
+            <span>
+              DATA → INSIGHT → SYSTEM
             </span>
 
-            <h1>
-              Mohammad
-              <br />
+            <span />
+
+          </div>
+
+
+          <div className="hero-system-right">
+
+            <span>
+              STATUS
+            </span>
+
+            <b>
+              ACTIVE
+            </b>
+
+          </div>
+
+        </motion.div>
+
+
+        {/* =================================================
+            HERO CONTENT
+        ================================================= */}
+
+        <div className="hero-main">
+
+
+          {/* ===============================================
+              LEFT CONTENT
+          =============================================== */}
+
+          <motion.div
+            className="hero-content"
+
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+
+            transition={{
+              duration: 0.75,
+              delay: 0.08,
+            }}
+          >
+
+
+            {/* =================================================
+                EYEBROW
+            ================================================= */}
+
+            <div className="hero-eyebrow">
+
+              <span className="hero-eyebrow-line" />
+
               <span>
-                Abdullah.
+                COMPUTER SCIENCE & ENGINEERING / DATA SCIENCE
               </span>
+
+            </div>
+
+
+            {/* =================================================
+                NAME
+            ================================================= */}
+
+            <h1 className="hero-title">
+
+              <span className="hero-title-muted">
+                Hi, I'm
+              </span>
+
+              <span className="hero-title-name">
+                Mohammad Abdullah
+                <i>.</i>
+              </span>
+
             </h1>
 
-          </div>
 
+            {/* =================================================
+                PRIMARY ROLE
+            ================================================= */}
 
-          {/* MAIN HEADLINE */}
+            <div className="hero-role">
 
-          <h2 className="hero-title">
-
-            Turning data into
-            <br />
-
-            <span className="gradient-text">
-              meaningful insights.
-            </span>
-
-          </h2>
-
-
-          {/* DESCRIPTION */}
-
-          <p className="hero-description">
-
-            I’m a Computer Science Engineering student
-            building my path toward Data Science. I work
-            with Python, SQL and C, with a focus on
-            transforming raw data into useful insights
-            and intelligent solutions.
-
-          </p>
-
-
-          {/* ACTIONS */}
-
-          <div className="hero-actions">
-
-            <a
-              href="#projects"
-              className="btn btn-primary"
-            >
-
-              <span>
-                Explore My Work
+              <span className="hero-role-index">
+                01
               </span>
 
-              <b>
-                ↗
-              </b>
-
-            </a>
-
-
-            <a
-              href="#contact"
-              className="btn btn-secondary"
-            >
+              <div className="hero-role-line" />
 
               <span>
-                Let's Connect
+                ASPIRING DATA SCIENTIST
               </span>
 
-            </a>
+              <span className="hero-role-divider">
+                /
+              </span>
 
-          </div>
+              <span>
+                DATA ANALYTICS
+              </span>
+
+            </div>
 
 
-          {/* STACK */}
+            {/* =================================================
+                DESCRIPTION
+            ================================================= */}
 
-          <div className="hero-stack">
+            <p className="hero-description">
 
-            <span>
-              Python
-            </span>
+              I'm a Computer Science & Engineering student
+              aspiring to build a career in Data Science. I have
+              a strong foundation in Data Analytics and hands-on
+              experience in Web Development, with a focus on
+              Python, SQL and building practical, data-driven
+              solutions.
 
-            <span>
-              SQL
-            </span>
+            </p>
 
-            <span>
-              C
-            </span>
 
-            <span>
-              Data Analytics
-            </span>
+            {/* =================================================
+                SECONDARY CAPABILITY
+            ================================================= */}
 
-            <span>
-              Data Science
-            </span>
+            <div className="hero-capability">
 
-          </div>
+              <span className="hero-capability-label">
+                ADDITIONAL STRENGTH
+              </span>
+
+              <span className="hero-capability-value">
+                 WEB DEVELOPMENT
+              </span>
+
+            </div>
+
+
+            {/* =================================================
+                CTA
+            ================================================= */}
+
+            <div className="hero-actions">
+
+              <button
+                type="button"
+                className="hero-primary-button"
+                onClick={() =>
+                  scrollToSection("projects")
+                }
+              >
+
+                <span>
+                  EXPLORE MY WORK
+                </span>
+
+                <FiArrowUpRight />
+
+              </button>
+
+
+              <button
+                type="button"
+                className="hero-secondary-button"
+                onClick={() =>
+                  scrollToSection("contact")
+                }
+              >
+
+                <FiMail />
+
+                <span>
+                  GET IN TOUCH
+                </span>
+
+              </button>
+
+            </div>
+
+
+            {/* =================================================
+                CURRENT TOOLKIT
+            ================================================= */}
+
+            <div className="hero-stack">
+
+              <span className="hero-stack-label">
+                CURRENT TOOLKIT
+              </span>
+
+
+              <div className="hero-stack-items">
+
+                {stack.map(
+                  (technology) => (
+
+                    <span
+                      key={technology}
+                    >
+                      {technology}
+                    </span>
+
+                  )
+                )}
+
+              </div>
+
+            </div>
+
+
+          </motion.div>
+
+
+          {/* ===============================================
+              RIGHT VISUAL
+          =============================================== */}
+
+          <motion.div
+            className="hero-visual"
+
+            initial={{
+              opacity: 0,
+              scale: 0.96,
+            }}
+
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+
+            transition={{
+              duration: 0.8,
+              delay: 0.2,
+            }}
+          >
+
+
+            {/* =================================================
+                VISUAL HEADER
+            ================================================= */}
+
+            <div className="hero-visual-header">
+
+              <div>
+
+                <span>
+                  SYSTEM PROFILE
+                </span>
+
+                <strong>
+                  MOHD_ABDULLAH
+                </strong>
+
+              </div>
+
+
+              <div className="hero-visual-live">
+
+                <i />
+
+                LIVE
+
+              </div>
+
+            </div>
+
+
+            {/* =================================================
+                PROFILE AREA
+            ================================================= */}
+
+            <div className="hero-profile-area">
+
+
+              {/* ===============================================
+                  PROFILE IMAGE
+              =============================================== */}
+
+              <div className="hero-profile-frame">
+
+                <div
+                  className="hero-profile-corner corner-tl"
+                />
+
+                <div
+                  className="hero-profile-corner corner-tr"
+                />
+
+                <div
+                  className="hero-profile-corner corner-bl"
+                />
+
+                <div
+                  className="hero-profile-corner corner-br"
+                />
+
+
+                <div className="hero-profile-image-wrap">
+
+                  <img
+                    src="/profile.jpg"
+                    alt="Mohd Abdullah"
+                    className="hero-profile-image"
+                  />
+
+                </div>
+
+
+                <div className="hero-profile-scan" />
+
+              </div>
+
+
+              {/* ===============================================
+                  PROFILE META
+              =============================================== */}
+
+              <div className="hero-profile-meta">
+
+                <div className="hero-meta-item">
+
+                  <span>
+                    PRIMARY FIELD
+                  </span>
+
+                  <strong>
+                    DATA SCIENCE
+                  </strong>
+
+                </div>
+
+
+                <div className="hero-meta-item">
+
+                  <span>
+                    FOCUS
+                  </span>
+
+                  <strong>
+                    DATA ANALYTICS
+                  </strong>
+
+                </div>
+
+
+                <div className="hero-meta-item">
+
+                  <span>
+                    FOUNDATION
+                  </span>
+
+                  <strong>
+                    CSE
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            {/* =================================================
+                DATA PIPELINE
+            ================================================= */}
+
+            <div className="hero-pipeline">
+
+              <div className="hero-pipeline-header">
+
+                <span>
+                  DATA SCIENCE WORKFLOW
+                </span>
+
+                <span>
+                  FLOW_01
+                </span>
+
+              </div>
+
+
+              <div className="hero-pipeline-track">
+
+                {pipeline.map(
+                  (
+                    item,
+                    index
+                  ) => (
+
+                    <div
+                      className="hero-pipeline-item"
+                      key={item.number}
+                    >
+
+                      <div className="hero-pipeline-node">
+
+                        <span>
+                          {item.number}
+                        </span>
+
+                      </div>
+
+
+                      <div className="hero-pipeline-text">
+
+                        <strong>
+                          {item.label}
+                        </strong>
+
+                        <span>
+                          {item.detail}
+                        </span>
+
+                      </div>
+
+
+                      {index <
+                        pipeline.length - 1 && (
+
+                        <div
+                          className="hero-pipeline-connector"
+                        >
+
+                          <span />
+
+                        </div>
+
+                      )}
+
+                    </div>
+
+                  )
+                )}
+
+              </div>
+
+            </div>
+
+
+            {/* =================================================
+                VISUAL FOOTER
+            ================================================= */}
+
+            <div className="hero-visual-footer">
+
+              <div>
+
+                <FiDatabase />
+
+                <span>
+                  DATA LAYER
+                </span>
+
+              </div>
+
+
+              <div>
+
+                <FiLayers />
+
+                <span>
+                  ANALYTICS LAYER
+                </span>
+
+              </div>
+
+
+              <div>
+
+                <FiTrendingUp />
+
+                <span>
+                  INSIGHT LAYER
+                </span>
+
+              </div>
+
+            </div>
+
+
+          </motion.div>
 
         </div>
 
 
         {/* =================================================
-            RIGHT VISUAL
+            TECHNICAL SIGNALS
         ================================================= */}
 
-        <div
-          className="hero-visual"
-          data-reveal-item
+        <motion.div
+          className="hero-signals"
+
+          initial={{
+            opacity: 0,
+            y: 15,
+          }}
+
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+
+          transition={{
+            duration: 0.7,
+            delay: 0.35,
+          }}
         >
 
+          {technicalSignals.map(
+            (signal) => (
 
-          {/* ORBITS */}
+              <div
+                className="hero-signal"
+                key={signal.label}
+              >
 
-          <div className="visual-orbit orbit-one"></div>
+                <span>
+                  {signal.value}
+                </span>
 
-          <div className="visual-orbit orbit-two"></div>
+                <div />
 
-
-          {/* DATA CARDS */}
-
-          <div className="data-card card-python">
-
-            <span className="mini-icon python-icon">
-              Py
-            </span>
-
-            <div>
-
-              <strong>
-                Python
-              </strong>
-
-              <small>
-                Data & Logic
-              </small>
-
-            </div>
-
-          </div>
-
-
-          <div className="data-card card-sql">
-
-            <span className="mini-icon sql-icon">
-              SQL
-            </span>
-
-            <div>
-
-              <strong>
-                SQL
-              </strong>
-
-              <small>
-                Data Queries
-              </small>
-
-            </div>
-
-          </div>
-
-
-          <div className="data-card card-analytics">
-
-            <span className="analytics-bars">
-
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-
-            </span>
-
-            <div>
-
-              <strong>
-                Analytics
-              </strong>
-
-              <small>
-                Insights from Data
-              </small>
-
-            </div>
-
-          </div>
-
-
-          {/* PROFILE */}
-
-          <div className="hero-profile">
-
-            <div className="profile-ring"></div>
-
-            <div className="profile-ring profile-ring-two"></div>
-
-
-            <div className="profile-image-wrap">
-
-              <img
-                src="/profile.jpg"
-                alt="Mohammad Abdullah"
-              />
-
-            </div>
-
-
-            <div className="profile-overlay">
-
-              <span>
-                ASPIRING
-              </span>
-
-              <strong>
-                DATA SCIENTIST
-              </strong>
-
-            </div>
-
-          </div>
-
-
-          {/* DATA NODES */}
-
-          <div className="data-node node-one"></div>
-
-          <div className="data-node node-two"></div>
-
-          <div className="data-node node-three"></div>
-
-
-          {/* CODE WINDOW */}
-
-          <div className="code-window">
-
-            <div className="code-header">
-
-              <div className="code-dots">
-
-                <span></span>
-                <span></span>
-                <span></span>
+                <strong>
+                  {signal.label}
+                </strong>
 
               </div>
 
-              <small>
-                analysis.py
-              </small>
+            )
+          )}
 
-            </div>
-
-
-            <div className="code-body">
-
-              <p>
-
-                <span className="code-purple">
-                  import
-                </span>{" "}
-
-                pandas
-
-                <span className="code-purple">
-                  {" "}as
-                </span>{" "}
-
-                pd
-
-              </p>
+        </motion.div>
 
 
-              <p>
+        {/* =================================================
+            SCROLL INDICATOR
+        ================================================= */}
 
-                <span className="code-purple">
-                  import
-                </span>{" "}
+        <button
+          type="button"
+          className="hero-scroll"
+          onClick={() =>
+            scrollToSection("about")
+          }
+        >
 
-                numpy
+          <span>
+            SCROLL TO EXPLORE
+          </span>
 
-                <span className="code-purple">
-                  {" "}as
-                </span>{" "}
+          <FiArrowDown />
 
-                np
+        </button>
 
-              </p>
-
-
-              <p className="code-space"></p>
-
-
-              <p>
-
-                data = pd.
-
-                <span className="code-green">
-                  read_csv
-                </span>
-
-                (
-
-                <span className="code-yellow">
-                  "dataset.csv"
-                </span>
-
-                )
-
-              </p>
-
-
-              <p>
-
-                insights = data.
-
-                <span className="code-green">
-                  describe
-                </span>
-
-                ()
-
-              </p>
-
-
-              <p className="code-space"></p>
-
-
-              <p>
-
-                <span className="code-blue">
-                  print
-                </span>
-
-                (
-
-                <span className="code-yellow">
-                  "Finding insights..."
-                </span>
-
-                )
-
-              </p>
-
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-
-      {/* =================================================
-          SCROLL INDICATOR
-      ================================================= */}
-
-      <a
-        href="#about"
-        className="hero-scroll"
-      >
-
-        <span>
-          SCROLL TO EXPLORE
-        </span>
-
-        <div className="scroll-line">
-
-          <span></span>
-
-        </div>
-
-      </a>
-
-
-      {/* =================================================
-          HERO FOOTER META
-      ================================================= */}
-
-      <div className="hero-meta">
-
-        <span>
-          01 / 05
-        </span>
-
-        <span>
-          DATA · CODE · INSIGHT
-        </span>
 
       </div>
 
     </section>
+
   );
 }
+
 
 export default Hero;

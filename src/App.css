@@ -1,160 +1,899 @@
 /* =========================================================
-   APP.CSS
-   Mohammad Abdullah — Portfolio
-   Global Application Layer
+   ABDULLAH — DATA SCIENCE PORTFOLIO
+   GLOBAL APPLICATION SYSTEM
+   AI / DATA ENGINEERING VISUAL LAYER
    ========================================================= */
 
 
 /* =========================================================
-   01. ROOT APP
+   01. APPLICATION SHELL
    ========================================================= */
 
 .app {
   position: relative;
-
-  width: 100%;
-  min-width: 320px;
   min-height: 100vh;
-
-  background:
-    #05090d;
-
-  color:
-    #cbd6da;
-
-  overflow-x: clip;
-
-  isolation: isolate;
+  width: 100%;
 }
 
 
 /* =========================================================
-   02. APPLICATION BACKGROUND
+   02. GLOBAL PAGE LAYER
    ========================================================= */
 
-.app::before {
-  content: "";
+main,
+footer {
+  position: relative;
+  z-index: 2;
+}
 
+
+/* =========================================================
+   03. AI / DATA BACKGROUND
+   ========================================================= */
+
+.data-background {
   position: fixed;
 
   inset: 0;
 
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
   pointer-events: none;
+
+  user-select: none;
+
+  background:
+    radial-gradient(
+      circle at 76% 18%,
+      rgba(79, 209, 197, 0.025),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 18% 72%,
+      rgba(79, 209, 197, 0.018),
+      transparent 30%
+    );
+}
+
+
+/* =========================================================
+   04. GLOBAL DATA GRID
+   ========================================================= */
+
+.data-background-grid {
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(132, 167, 161, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(132, 167, 161, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    64px 64px;
+
+  opacity: 0.65;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 0%,
+      rgba(0, 0, 0, 0.75) 48%,
+      transparent 90%
+    );
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 0%,
+      rgba(0, 0, 0, 0.75) 48%,
+      transparent 90%
+    );
+
+  animation:
+    backgroundGridMove 24s linear infinite;
+}
+
+
+@keyframes backgroundGridMove {
+
+  from {
+    transform:
+      translate3d(0, 0, 0);
+  }
+
+  to {
+    transform:
+      translate3d(64px, 64px, 0);
+  }
+
+}
+
+
+/* =========================================================
+   05. SOFT AI GLOWS
+   ========================================================= */
+
+.data-background-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter:
+    blur(30px);
+
+  opacity: 0.5;
+
+  animation:
+    backgroundGlowFloat 10s ease-in-out infinite;
+}
+
+
+.glow-one {
+  width: 420px;
+  height: 420px;
+
+  top: 5%;
+  right: -150px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(79, 209, 197, 0.045),
+      transparent 68%
+    );
+}
+
+
+.glow-two {
+  width: 360px;
+  height: 360px;
+
+  left: -140px;
+  bottom: 15%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(79, 209, 197, 0.025),
+      transparent 68%
+    );
+
+  animation-delay:
+    -5s;
+}
+
+
+@keyframes backgroundGlowFloat {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0);
+
+    opacity:
+      0.35;
+  }
+
+  50% {
+    transform:
+      translate3d(0, -24px, 0);
+
+    opacity:
+      0.62;
+  }
+
+}
+
+
+/* =========================================================
+   06. VERTICAL DATA LINES
+   ========================================================= */
+
+.data-background-lines {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+.data-background-line {
+  position: absolute;
+
+  top: 0;
+
+  width: 1px;
+
+  height: 100%;
 
   background:
     linear-gradient(
-      180deg,
-      rgba(5, 9, 13, 0.1),
-      rgba(5, 9, 13, 0.35)
+      to bottom,
+      transparent 0%,
+      rgba(79, 209, 197, 0.035) 10%,
+      rgba(79, 209, 197, 0.11) 42%,
+      rgba(79, 209, 197, 0.035) 78%,
+      transparent 100%
     );
 
-  z-index: -10;
+  opacity:
+    0.55;
+}
+
+
+/* ---------------------------------------------------------
+   LINE POSITIONS
+   --------------------------------------------------------- */
+
+.line-one {
+  left: 12%;
+}
+
+.line-two {
+  left: 29%;
+
+  opacity:
+    0.25;
+}
+
+.line-three {
+  left: 50%;
+
+  opacity:
+    0.18;
+}
+
+.line-four {
+  left: 71%;
+
+  opacity:
+    0.32;
+}
+
+.line-five {
+  left: 88%;
+
+  opacity:
+    0.24;
 }
 
 
 /* =========================================================
-   03. AMBIENT LIGHT
+   07. MOVING DATA STREAMS
    ========================================================= */
 
-.app::after {
+.data-background-line::after {
   content: "";
 
-  position: fixed;
+  position: absolute;
 
-  width: 1px;
-  height: 1px;
+  left: -1px;
 
-  left: 50%;
-  top: 42%;
+  top: -120px;
 
-  pointer-events: none;
+  width: 3px;
+
+  height: 120px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(79, 209, 197, 0.55),
+      rgba(79, 209, 197, 0.08),
+      transparent
+    );
+
+  filter:
+    blur(0.5px);
+
+  animation:
+    dataStreamDown 7s linear infinite;
+}
+
+
+.line-one::after {
+  animation-delay:
+    -1s;
+}
+
+
+.line-two::after {
+  animation-delay:
+    -4.5s;
+
+  opacity:
+    0.55;
+}
+
+
+.line-three::after {
+  animation-delay:
+    -2.5s;
+
+  opacity:
+    0.45;
+}
+
+
+.line-four::after {
+  animation-delay:
+    -6s;
+
+  opacity:
+    0.7;
+}
+
+
+.line-five::after {
+  animation-delay:
+    -3.5s;
+
+  opacity:
+    0.4;
+}
+
+
+@keyframes dataStreamDown {
+
+  0% {
+    transform:
+      translateY(-120px);
+
+    opacity:
+      0;
+  }
+
+  10% {
+    opacity:
+      1;
+  }
+
+  75% {
+    opacity:
+      0.55;
+  }
+
+  100% {
+    transform:
+      translateY(110vh);
+
+    opacity:
+      0;
+  }
+
+}
+
+
+/* =========================================================
+   08. BACKGROUND DATA NODES
+   ========================================================= */
+
+.data-background-nodes {
+  position: absolute;
+
+  inset: 0;
+}
+
+
+.data-background-node {
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  border:
+    1px solid
+    rgba(79, 209, 197, 0.35);
+
+  border-radius: 50%;
+
+  background:
+    rgba(79, 209, 197, 0.8);
 
   box-shadow:
-    0 0 180px 90px
-    rgba(85, 214, 190, 0.008);
+    0 0 14px
+    rgba(79, 209, 197, 0.24);
 
-  z-index: -9;
+  animation:
+    backgroundNodePulse 3.5s ease-in-out infinite;
+}
+
+
+.data-background-node::before {
+  content: "";
+
+  position: absolute;
+
+  inset:
+    -7px;
+
+  border:
+    1px solid
+    rgba(79, 209, 197, 0.06);
+
+  border-radius: 50%;
+
+  animation:
+    nodeRing 3.5s ease-in-out infinite;
+}
+
+
+/* ---------------------------------------------------------
+   NODE POSITIONS
+   --------------------------------------------------------- */
+
+.node-one {
+  top: 18%;
+  left: 12%;
+
+  animation-delay:
+    -0.5s;
+}
+
+.node-two {
+  top: 34%;
+  left: 29%;
+
+  animation-delay:
+    -1.4s;
+}
+
+.node-three {
+  top: 51%;
+  left: 50%;
+
+  animation-delay:
+    -2.2s;
+}
+
+.node-four {
+  top: 29%;
+  left: 71%;
+
+  animation-delay:
+    -0.8s;
+}
+
+.node-five {
+  top: 72%;
+  left: 88%;
+
+  animation-delay:
+    -1.8s;
+}
+
+.node-six {
+  top: 81%;
+  left: 18%;
+
+  animation-delay:
+    -2.8s;
+}
+
+
+@keyframes backgroundNodePulse {
+
+  0%,
+  100% {
+    transform:
+      scale(0.7);
+
+    opacity:
+      0.25;
+  }
+
+  50% {
+    transform:
+      scale(1);
+
+    opacity:
+      0.9;
+  }
+
+}
+
+
+@keyframes nodeRing {
+
+  0%,
+  100% {
+    transform:
+      scale(0.7);
+
+    opacity:
+      0;
+  }
+
+  50% {
+    transform:
+      scale(1.1);
+
+    opacity:
+      1;
+  }
+
 }
 
 
 /* =========================================================
-   04. MAIN
+   09. NEURAL NETWORK
    ========================================================= */
 
-.app main {
-  position: relative;
+.data-neural-network {
+  position: absolute;
+
+  inset: 0;
+
+  opacity:
+    0.35;
+}
+
+
+.neural-line {
+  position: absolute;
+
+  height: 1px;
+
+  transform-origin:
+    left center;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(79, 209, 197, 0),
+      rgba(79, 209, 197, 0.10),
+      rgba(79, 209, 197, 0)
+    );
+
+  animation:
+    neuralSignal 5s ease-in-out infinite;
+}
+
+
+/* ---------------------------------------------------------
+   CONNECTIONS
+   --------------------------------------------------------- */
+
+.neural-line-one {
+  width: 19%;
+
+  top: 18%;
+  left: 12%;
+
+  transform:
+    rotate(24deg);
+}
+
+
+.neural-line-two {
+  width: 22%;
+
+  top: 34%;
+  left: 29%;
+
+  transform:
+    rotate(17deg);
+
+  animation-delay:
+    -1.5s;
+}
+
+
+.neural-line-three {
+  width: 24%;
+
+  top: 51%;
+  left: 50%;
+
+  transform:
+    rotate(-18deg);
+
+  animation-delay:
+    -3s;
+}
+
+
+.neural-line-four {
+  width: 18%;
+
+  top: 29%;
+  left: 71%;
+
+  transform:
+    rotate(35deg);
+
+  animation-delay:
+    -2s;
+}
+
+
+.neural-line-five {
+  width: 25%;
+
+  top: 72%;
+  left: 18%;
+
+  transform:
+    rotate(-8deg);
+
+  animation-delay:
+    -4s;
+}
+
+
+@keyframes neuralSignal {
+
+  0%,
+  100% {
+    opacity:
+      0.1;
+  }
+
+  50% {
+    opacity:
+      0.55;
+  }
+
+}
+
+
+/* =========================================================
+   10. DATA SIGNAL
+   ========================================================= */
+
+.data-signal {
+  position: absolute;
+
+  top: 43%;
+
+  left: 0;
 
   width: 100%;
 
-  min-height: 100vh;
+  height: 180px;
+
+  opacity:
+    0.18;
 }
 
 
-/* =========================================================
-   05. MAIN STACK
-   ========================================================= */
+.data-signal::before {
+  content: "";
 
-.app main > section {
-  position: relative;
+  position: absolute;
+
+  left: 0;
+
+  top: 50%;
 
   width: 100%;
 
-  isolation: isolate;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(79, 209, 197, 0.08),
+      transparent
+    );
+}
+
+
+.signal-point {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background:
+    #4fd1c5;
+
+  box-shadow:
+    0 0 10px
+    rgba(79, 209, 197, 0.4);
+
+  animation:
+    signalPointMove 6s ease-in-out infinite;
+}
+
+
+.signal-point-one {
+  left: 21%;
+  top: 44%;
+}
+
+
+.signal-point-two {
+  left: 42%;
+  top: 32%;
+
+  animation-delay:
+    -1.5s;
+}
+
+
+.signal-point-three {
+  left: 63%;
+  top: 59%;
+
+  animation-delay:
+    -3s;
+}
+
+
+.signal-point-four {
+  left: 82%;
+  top: 28%;
+
+  animation-delay:
+    -4.5s;
+}
+
+
+@keyframes signalPointMove {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      scale(0.8);
+
+    opacity:
+      0.25;
+  }
+
+  50% {
+    transform:
+      translateY(-10px)
+      scale(1.15);
+
+    opacity:
+      0.85;
+  }
+
 }
 
 
 /* =========================================================
-   06. SECTION SEPARATORS
+   11. BACKGROUND TECHNICAL LABELS
    ========================================================= */
 
-.app main > section:not(:first-child)::before {
+.data-background-labels {
+  position: absolute;
+
+  inset: 0;
+
+  font-family:
+    var(--font-mono);
+
+  font-size:
+    7px;
+
+  letter-spacing:
+    1px;
+
+  color:
+    rgba(100, 137, 131, 0.16);
+}
+
+
+.background-label {
+  position: absolute;
+
+  white-space:
+    nowrap;
+}
+
+
+.label-python {
+  top: 17%;
+
+  left: 8%;
+}
+
+
+.label-sql {
+  top: 42%;
+
+  left: 26%;
+}
+
+
+.label-model {
+  top: 24%;
+
+  right: 15%;
+}
+
+
+.label-data {
+  top: 67%;
+
+  right: 7%;
+}
+
+
+.label-analysis {
+  bottom: 11%;
+
+  left: 44%;
+}
+
+
+/* =========================================================
+   12. CONTENT PROTECTION
+   ========================================================= */
+
+main,
+footer {
+  isolation:
+    isolate;
+}
+
+
+main::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(5, 9, 11, 0),
+      rgba(5, 9, 11, 0.08) 30%,
+      rgba(5, 9, 11, 0.18) 75%,
+      rgba(5, 9, 11, 0.3)
+    );
+
+  pointer-events:
+    none;
+}
+
+
+/* =========================================================
+   13. SECTION TRANSITION
+   ========================================================= */
+
+main > section + section::before {
   content: "";
 
   position: absolute;
 
   top: 0;
+
   left: 50%;
 
   width:
     min(
-      calc(100% - 64px),
-      1380px
+      calc(100% - 48px),
+      var(--container-width)
     );
 
-  height: 1px;
-
-  transform:
-    translateX(-50%);
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.035) 25%,
-      rgba(255, 255, 255, 0.055) 50%,
-      rgba(255, 255, 255, 0.035) 75%,
-      transparent 100%
-    );
-
-  pointer-events: none;
-
-  z-index: 20;
-}
-
-
-/* =========================================================
-   07. SECTION SEPARATOR GLOW
-   ========================================================= */
-
-.app main > section:not(:first-child)::after {
-  content: "";
-
-  position: absolute;
-
-  top: -1px;
-  left: 50%;
-
-  width: 120px;
   height: 1px;
 
   transform:
@@ -164,743 +903,347 @@
     linear-gradient(
       90deg,
       transparent,
-      rgba(85, 214, 190, 0.15),
+      rgba(131, 170, 167, 0.07),
       transparent
     );
 
-  opacity: 0.5;
-
-  pointer-events: none;
-
-  z-index: 21;
+  pointer-events:
+    none;
 }
 
 
 /* =========================================================
-   08. CONTAINER SAFETY
+   14. GLOBAL HOVER DATA EFFECT
    ========================================================= */
 
-.app .container {
-  position: relative;
+[data-data-card] {
+  position:
+    relative;
 
-  width:
-    min(
-      calc(100% - 64px),
-      1380px
-    );
-
-  margin-left: auto;
-  margin-right: auto;
+  overflow:
+    hidden;
 }
 
 
-/* =========================================================
-   09. CONTAINER WIDTH
-   ========================================================= */
-
-.app .container {
-  max-width: 1380px;
-}
-
-
-/* =========================================================
-   10. SECTION HEIGHT BEHAVIOR
-   ========================================================= */
-
-.app main > section {
-  min-width: 0;
-}
-
-
-/* =========================================================
-   11. TEXT RENDERING
-   ========================================================= */
-
-.app h1,
-.app h2,
-.app h3,
-.app h4,
-.app h5,
-.app h6,
-.app p,
-.app span,
-.app a {
-  text-rendering:
-    optimizeLegibility;
-}
-
-
-/* =========================================================
-   12. LINK RESET
-   ========================================================= */
-
-.app a {
-  text-decoration: none;
-
-  color: inherit;
-}
-
-
-/* =========================================================
-   13. IMAGE RESET
-   ========================================================= */
-
-.app img {
-  max-width: 100%;
-
-  height: auto;
-}
-
-
-/* =========================================================
-   14. BUTTON RESET
-   ========================================================= */
-
-.app button {
-  border: 0;
-
-  background: transparent;
-
-  color: inherit;
-
-  cursor: pointer;
-}
-
-
-/* =========================================================
-   15. INPUT RESET
-   ========================================================= */
-
-.app input,
-.app textarea,
-.app select {
-  outline: none;
-}
-
-
-/* =========================================================
-   16. FOCUS SYSTEM
-   ========================================================= */
-
-.app :focus-visible {
-  outline:
-    1px solid
-    rgba(85, 214, 190, 0.5);
-
-  outline-offset:
-    5px;
-}
-
-
-/* =========================================================
-   17. HOVER TRANSITION SUPPORT
-   ========================================================= */
-
-.app a,
-.app button {
-  -webkit-tap-highlight-color:
-    transparent;
-}
-
-
-/* =========================================================
-   18. GLOBAL SELECTION
-   ========================================================= */
-
-.app ::selection {
-  background:
-    rgba(85, 214, 190, 0.85);
-
-  color:
-    #06100f;
-}
-
-
-/* =========================================================
-   19. CUSTOM SCROLLBAR
-   ========================================================= */
-
-.app::-webkit-scrollbar {
-  width: 7px;
-}
-
-
-.app::-webkit-scrollbar-track {
-  background:
-    #030609;
-}
-
-
-.app::-webkit-scrollbar-thumb {
-  background:
-    #17252b;
-
-  border-radius:
-    999px;
-}
-
-
-.app::-webkit-scrollbar-thumb:hover {
-  background:
-    #294047;
-}
-
-
-/* =========================================================
-   20. GLOBAL PAGE GRID
-   ========================================================= */
-
-.app main::before {
+[data-data-card]::after {
   content: "";
 
-  position: fixed;
+  position: absolute;
 
-  inset: 0;
+  left: 0;
 
-  pointer-events: none;
+  bottom: 0;
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0,
-      transparent calc(50% - 0.5px),
-      rgba(255, 255, 255, 0.012) calc(50% - 0.5px),
-      rgba(255, 255, 255, 0.012) 50%,
-      transparent 50%,
-      transparent 100%
-    );
-
-  opacity:
-    0.25;
-
-  z-index:
-    -8;
-}
-
-
-/* =========================================================
-   21. PAGE NOISE
-   ========================================================= */
-
-.app main::after {
-  content: "";
-
-  position: fixed;
-
-  inset: 0;
-
-  pointer-events: none;
-
-  opacity: 0.015;
-
-  background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
-
-  z-index:
-    50;
-}
-
-
-/* =========================================================
-   22. REVEAL BASE
-   ========================================================= */
-
-.app [data-reveal-item] {
-  opacity: 0;
-
-  transform:
-    translateY(35px);
-
-  transition:
-    opacity 0.9s cubic-bezier(
-      0.22,
-      1,
-      0.36,
-      1
-    ),
-    transform 0.9s cubic-bezier(
-      0.22,
-      1,
-      0.36,
-      1
-    );
-}
-
-
-/* =========================================================
-   23. REVEAL ACTIVE
-   ========================================================= */
-
-.app [data-reveal-item].is-visible {
-  opacity: 1;
-
-  transform:
-    translateY(0);
-}
-
-
-/* =========================================================
-   24. REVEAL DELAY 01
-   ========================================================= */
-
-.app [data-reveal-item]:nth-child(1) {
-  transition-delay: 0ms;
-}
-
-
-/* =========================================================
-   25. REVEAL DELAY 02
-   ========================================================= */
-
-.app [data-reveal-item]:nth-child(2) {
-  transition-delay: 80ms;
-}
-
-
-/* =========================================================
-   26. REVEAL DELAY 03
-   ========================================================= */
-
-.app [data-reveal-item]:nth-child(3) {
-  transition-delay: 160ms;
-}
-
-
-/* =========================================================
-   27. REVEAL DELAY 04
-   ========================================================= */
-
-.app [data-reveal-item]:nth-child(4) {
-  transition-delay: 240ms;
-}
-
-
-/* =========================================================
-   28. REVEAL DELAY 05
-   ========================================================= */
-
-.app [data-reveal-item]:nth-child(5) {
-  transition-delay: 320ms;
-}
-
-
-/* =========================================================
-   29. REVEAL DELAY 06
-   ========================================================= */
-
-.app [data-reveal-item]:nth-child(6) {
-  transition-delay: 400ms;
-}
-
-
-/* =========================================================
-   30. REVEAL DELAY 07
-   ========================================================= */
-
-.app [data-reveal-item]:nth-child(7) {
-  transition-delay: 480ms;
-}
-
-
-/* =========================================================
-   31. REVEAL DELAY 08
-   ========================================================= */
-
-.app [data-reveal-item]:nth-child(8) {
-  transition-delay: 560ms;
-}
-
-
-/* =========================================================
-   32. HERO DEPTH
-   ========================================================= */
-
-.app main > section:first-child {
-  position: relative;
-
-  z-index: 1;
-}
-
-
-/* =========================================================
-   33. ABOUT DEPTH
-   ========================================================= */
-
-.app #about {
-  z-index: 2;
-}
-
-
-/* =========================================================
-   34. SKILLS DEPTH
-   ========================================================= */
-
-.app #skills {
-  z-index: 3;
-}
-
-
-/* =========================================================
-   35. PROJECTS DEPTH
-   ========================================================= */
-
-.app #projects {
-  z-index: 4;
-}
-
-
-/* =========================================================
-   36. CONTACT DEPTH
-   ========================================================= */
-
-.app #contact {
-  z-index: 5;
-}
-
-
-/* =========================================================
-   37. SECTION HOVER SUPPORT
-   ========================================================= */
-
-.app main > section {
-  transition:
-    background 0.6s ease;
-}
-
-
-/* =========================================================
-   38. HERO COLOR
-   ========================================================= */
-
-.app main > section:first-child {
-  background:
-    #05090d;
-}
-
-
-/* =========================================================
-   39. ABOUT COLOR
-   ========================================================= */
-
-.app #about {
-  background:
-    #05090d;
-}
-
-
-/* =========================================================
-   40. SKILLS COLOR
-   ========================================================= */
-
-.app #skills {
-  background:
-    #060b10;
-}
-
-
-/* =========================================================
-   41. PROJECTS COLOR
-   ========================================================= */
-
-.app #projects {
-  background:
-    #05090d;
-}
-
-
-/* =========================================================
-   42. CONTACT COLOR
-   ========================================================= */
-
-.app #contact {
-  background:
-    #060b10;
-}
-
-
-/* =========================================================
-   43. FOOTER DEPTH
-   ========================================================= */
-
-.app > footer {
-  position: relative;
-
-  z-index: 6;
-}
-
-
-/* =========================================================
-   44. GLOBAL HORIZONTAL LINE
-   ========================================================= */
-
-.app .global-line {
   width: 100%;
 
   height: 1px;
 
-  background:
-    rgba(255, 255, 255, 0.05);
-}
+  transform:
+    scaleX(0);
 
-
-/* =========================================================
-   45. GLOBAL GLOW
-   ========================================================= */
-
-.app .global-glow {
-  position: absolute;
-
-  width: 300px;
-  height: 300px;
-
-  border-radius: 50%;
+  transform-origin:
+    left;
 
   background:
-    radial-gradient(
-      circle,
-      rgba(85, 214, 190, 0.04),
-      transparent 70%
+    linear-gradient(
+      90deg,
+      var(--color-accent),
+      transparent
     );
 
-  pointer-events: none;
+  transition:
+    transform 450ms
+    cubic-bezier(
+      0.2,
+      0.7,
+      0.2,
+      1
+    );
+}
+
+
+[data-data-card]:hover::after {
+  transform:
+    scaleX(1);
 }
 
 
 /* =========================================================
-   46. CONTENT PROTECTION
+   15. GLOBAL SELECTION
    ========================================================= */
 
-.app main > section > .container {
-  position: relative;
-
-  z-index: 2;
+::selection {
+  background:
+    rgba(79, 209, 197, 0.18);
 }
 
 
 /* =========================================================
-   47. OVERFLOW PROTECTION
+   16. RESPONSIVE BACKGROUND
    ========================================================= */
 
-.app,
-.app main,
-.app main > section {
-  overflow-x: clip;
-}
+@media (max-width: 900px) {
 
-
-/* =========================================================
-   48. MOBILE CONTAINER
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-  .app .container {
-    width:
-      calc(100% - 36px);
+  .data-background-grid {
+    background-size:
+      52px 52px;
   }
 
-}
-
-
-/* =========================================================
-   49. SMALL MOBILE CONTAINER
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-  .app .container {
-    width:
-      calc(100% - 30px);
-  }
-
-}
-
-
-/* =========================================================
-   50. TABLET SECTION LINE
-   ========================================================= */
-
-@media (max-width: 1000px) {
-
-  .app main > section:not(:first-child)::before {
-    width:
-      calc(100% - 48px);
-  }
-
-}
-
-
-/* =========================================================
-   51. MOBILE SECTION LINE
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-  .app main > section:not(:first-child)::before {
-    width:
-      calc(100% - 36px);
-  }
-
-}
-
-
-/* =========================================================
-   52. SMALL SECTION LINE
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-  .app main > section:not(:first-child)::before {
-    width:
-      calc(100% - 30px);
-  }
-
-}
-
-
-/* =========================================================
-   53. MOBILE REVEAL
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-  .app [data-reveal-item] {
-    transform:
-      translateY(25px);
-
-    transition-duration:
-      0.75s;
-  }
-
-}
-
-
-/* =========================================================
-   54. MOBILE GRID
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-  .app main::before {
-    display: none;
-  }
-
-}
-
-
-/* =========================================================
-   55. MOBILE NOISE
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-  .app main::after {
+  .data-background-line {
     opacity:
-      0.01;
+      0.65;
+  }
+
+  .data-background-labels {
+    font-size:
+      6px;
   }
 
 }
 
 
 /* =========================================================
-   56. TOUCH DEVICES
+   17. MOBILE
    ========================================================= */
 
-@media (hover: none) {
+@media (max-width: 760px) {
 
-  .app a:hover {
-    transform:
+  .data-background {
+    position:
+      fixed;
+  }
+
+
+  .data-background-grid {
+    background-size:
+      44px 44px;
+
+    opacity:
+      0.45;
+  }
+
+
+  .data-background-line {
+    opacity:
+      0.45;
+  }
+
+
+  .line-two,
+  .line-four {
+    opacity:
+      0.18;
+  }
+
+
+  .data-background-node {
+    width:
+      5px;
+
+    height:
+      5px;
+  }
+
+
+  .data-background-labels {
+    opacity:
+      0.6;
+
+    font-size:
+      5px;
+  }
+
+
+  .label-model,
+  .label-data {
+    display:
       none;
   }
 
+
+  .data-background-glow {
+    filter:
+      blur(45px);
+
+    opacity:
+      0.35;
+  }
+
+
+  .data-neural-network {
+    opacity:
+      0.2;
+  }
+
+
+  .data-signal {
+    opacity:
+      0.12;
+  }
+
 }
 
 
 /* =========================================================
-   57. REDUCED MOTION
+   18. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+  .data-background-grid {
+    background-size:
+      38px 38px;
+  }
+
+
+  .line-three {
+    display:
+      none;
+  }
+
+
+  .node-three {
+    left:
+      55%;
+  }
+
+
+  .background-label {
+    font-size:
+      4px;
+  }
+
+
+  .label-python {
+    left:
+      5%;
+  }
+
+
+  .label-sql {
+    left:
+      22%;
+  }
+
+
+  .label-analysis {
+    left:
+      35%;
+  }
+
+}
+
+
+/* =========================================================
+   19. REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-  .app [data-reveal-item] {
-    opacity: 1;
-
-    transform:
-      none;
-
-    transition:
-      none;
-  }
-
-
-  .app main > section {
-    transition:
-      none;
-  }
-
-
-  .app main::before,
-  .app main::after,
-  .app::after {
-    display: none;
+  .data-background-grid,
+  .data-background-glow,
+  .data-background-line::after,
+  .data-background-node,
+  .data-background-node::before,
+  .neural-line,
+  .signal-point {
+    animation:
+      none !important;
   }
 
 }
-
-
 /* =========================================================
-   58. PRINT
+   FINAL APP GLOBAL POLISH
    ========================================================= */
 
-@media print {
+html {
+  scroll-behavior: smooth;
+}
 
-  .app {
-    background:
-      #ffffff;
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+}
 
-    color:
-      #000000;
-  }
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
+.app {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: clip;
+}
 
-  .app main::before,
-  .app main::after,
-  .app::before,
-  .app::after {
-    display: none;
-  }
+main {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
 
+main > section {
+  position: relative;
+  width: 100%;
+}
 
-  .app main > section:not(:first-child)::before {
-    display: none;
-  }
-
+footer {
+  position: relative;
+  z-index: 2;
 }
 
 
-/* =========================================================
-   59. DARK SAFETY
-   ========================================================= */
+/* Keep global background behind every section */
 
-.app * {
-  scrollbar-width:
-    thin;
-
-  scrollbar-color:
-    #1a292f
-    transparent;
+.data-background,
+.data-background-grid,
+.data-background-lines,
+.data-background-nodes,
+.data-neural-network,
+.data-background-labels,
+.data-signal {
+  pointer-events: none !important;
 }
 
 
-/* =========================================================
-   60. LAST GLOBAL SAFETY
-   ========================================================= */
+/* Don't let decorative layers affect readability */
 
-.app > * {
+.data-background {
+  user-select: none;
+}
+
+
+/* Section transition stays subtle */
+
+main > section + section::before {
+  opacity: 0.75;
+}
+
+
+/* Prevent accidental horizontal scrolling */
+
+img,
+svg,
+video,
+canvas {
   max-width: 100%;
 }
 
 
-/* =========================================================
-   END
-========================================================= */
+/* Mobile */
+
+@media (max-width: 760px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  #root,
+  .app {
+    overflow-x: clip;
+  }
+
+}

@@ -1,161 +1,363 @@
-import { useEffect, useState } from "react";
 import "./Navbar.css";
 
-function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+import {
+  FiActivity,
+  FiArrowUpRight,
+  FiMenu,
+  FiX,
+} from "react-icons/fi";
 
-  /* =====================================================
-     SCROLL EFFECT
-  ====================================================== */
+import { useEffect, useState } from "react";
+
+
+/* =========================================================
+   NAVIGATION CONFIGURATION
+   ========================================================= */
+
+const navigation = [
+  {
+    id: "home",
+    label: "Home",
+    href: "#home",
+  },
+  {
+    id: "about",
+    label: "About",
+    href: "#about",
+  },
+  {
+    id: "skills",
+    label: "Skills",
+    href: "#skills",
+  },
+  {
+    id: "what-i-do",
+    label: "What I Do",
+    href: "#what-i-do",
+  },
+  {
+    id: "projects",
+    label: "Work",
+    href: "#projects",
+  },
+  {
+    id: "experience",
+    label: "Journey",
+    href: "#experience",
+  },
+  {
+    id: "contact",
+    label: "Contact",
+    href: "#contact",
+  },
+];
+
+
+/* =========================================================
+   NAVBAR COMPONENT
+   ========================================================= */
+
+function Navbar() {
+
+  const [isScrolled, setIsScrolled] =
+    useState(false);
+
+  const [isMenuOpen, setIsMenuOpen] =
+    useState(false);
+
+  const [activeSection, setActiveSection] =
+    useState("home");
+
+
+  /* =======================================================
+     SCROLL / ACTIVE SECTION TRACKING
+     ======================================================= */
 
   useEffect(() => {
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+
+      const scrollTop =
+        window.scrollY;
+
+
+      setIsScrolled(
+        scrollTop > 30
+      );
+
+
+      const detectionPoint =
+        scrollTop +
+        window.innerHeight * 0.30;
+
+
+      let currentSection =
+        "home";
+
+
+      navigation.forEach(
+        (item) => {
+
+          const section =
+            document.getElementById(
+              item.id
+            );
+
+
+          if (!section) {
+            return;
+          }
+
+
+          const sectionTop =
+            section.offsetTop;
+
+
+          const sectionBottom =
+            sectionTop +
+            section.offsetHeight;
+
+
+          if (
+            detectionPoint >= sectionTop &&
+            detectionPoint < sectionBottom
+          ) {
+
+            currentSection =
+              item.id;
+
+          }
+
+        }
+      );
+
+
+      setActiveSection(
+        currentSection
+      );
+
     };
 
-    window.addEventListener("scroll", handleScroll);
 
     handleScroll();
 
+
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive: true,
+      }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      handleScroll
+    );
+
+
     return () => {
+
       window.removeEventListener(
         "scroll",
         handleScroll
       );
+
+      window.removeEventListener(
+        "resize",
+        handleScroll
+      );
+
     };
+
   }, []);
 
 
-  /* =====================================================
-     ACTIVE SECTION
-  ====================================================== */
+  /* =======================================================
+     MOBILE MENU BODY LOCK
+     ======================================================= */
 
   useEffect(() => {
-    const sections = document.querySelectorAll(
-      "section[id]"
-    );
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSection = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio -
-              a.intersectionRatio
-          )[0];
+    if (isMenuOpen) {
 
-        if (visibleSection) {
-          setActiveSection(
-            visibleSection.target.id
-          );
-        }
-      },
-      {
-        rootMargin:
-          "-25% 0px -55% 0px",
+      document.body.style.overflow =
+        "hidden";
 
-        threshold: [0.1, 0.25, 0.5],
-      }
-    );
+    } else {
 
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+      document.body.style.overflow =
+        "";
+
+    }
+
 
     return () => {
-      observer.disconnect();
+
+      document.body.style.overflow =
+        "";
+
     };
-  }, []);
+
+  }, [isMenuOpen]);
 
 
-  /* =====================================================
-     NAVIGATION
-  ====================================================== */
+  /* =======================================================
+     CLOSE MENU ON ESCAPE
+     ======================================================= */
 
-  const navItems = [
-    {
-      label: "Home",
-      id: "home",
-    },
+  useEffect(() => {
 
-    {
-      label: "About",
-      id: "about",
-    },
+    const handleKeyDown = (
+      event
+    ) => {
 
-    {
-      label: "Skills",
-      id: "skills",
-    },
+      if (
+        event.key === "Escape" &&
+        isMenuOpen
+      ) {
 
-    {
-      label: "Projects",
-      id: "projects",
-    },
+        setIsMenuOpen(
+          false
+        );
 
-    {
-      label: "Contact",
-      id: "contact",
-    },
-  ];
+      }
+
+    };
 
 
-  /* =====================================================
-     CLOSE MOBILE MENU
-  ====================================================== */
+    window.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
 
-  const handleNavigation = () => {
-    setMenuOpen(false);
+
+    return () => {
+
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
+
+    };
+
+  }, [isMenuOpen]);
+
+
+  /* =======================================================
+     NAVIGATION HANDLER
+     ======================================================= */
+
+  const handleNavigation = (
+    href
+  ) => {
+
+    const targetId =
+      href.replace(
+        "#",
+        ""
+      );
+
+
+    const target =
+      document.getElementById(
+        targetId
+      );
+
+
+    setIsMenuOpen(
+      false
+    );
+
+
+    if (!target) {
+      return;
+    }
+
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
   };
 
 
-  /* =====================================================
+  /* =======================================================
+     BRAND CLICK
+     ======================================================= */
+
+  const handleBrandClick = () => {
+
+    setIsMenuOpen(
+      false
+    );
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+  };
+
+
+  /* =======================================================
      RENDER
-  ====================================================== */
+     ======================================================= */
 
   return (
+
     <header
-      className={`
-        navbar
-        ${scrolled ? "navbar-scrolled" : ""}
-        ${menuOpen ? "navbar-open" : ""}
-      `}
+      className={`navbar ${
+        isScrolled
+          ? "navbar-scrolled"
+          : ""
+      }`}
     >
 
-      <div className="navbar-container">
+      <div className="container navbar-container">
 
 
         {/* =================================================
             BRAND
         ================================================= */}
 
-        <a
-          href="#home"
+        <button
+          type="button"
           className="navbar-brand"
-          onClick={handleNavigation}
+          onClick={
+            handleBrandClick
+          }
+          aria-label="Go to homepage"
         >
 
-          <span className="navbar-brand-mark">
-            MA
+          <span
+            className="brand-mark"
+            aria-hidden="true"
+          >
+            M
           </span>
 
 
-          <span className="navbar-brand-info">
+          <span className="brand-content">
 
-            <strong>
-              Mohammad Abdullah
-            </strong>
+            <span className="brand-name">
+              Mohd Abdullah
+              <span className="brand-dot">
+                .
+              </span>
+            </span>
 
-            <small>
-              DATA · CODE · INSIGHT
-            </small>
+
+            <span className="brand-role">
+              DATA / AI ENGINEERING
+            </span>
 
           </span>
 
-        </a>
+        </button>
 
 
         {/* =================================================
@@ -163,153 +365,265 @@ function Navbar() {
         ================================================= */}
 
         <nav
-          className="navbar-links"
-          aria-label="Main navigation"
+          className="navbar-navigation"
+          aria-label="Primary navigation"
         >
 
-          {navItems.map((item, index) => (
+          {navigation.map(
+            (item) => {
 
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={`
-                navbar-link
-                ${
-                  activeSection === item.id
-                    ? "navbar-link-active"
-                    : ""
-                }
-              `}
-              onClick={handleNavigation}
-            >
+              const isActive =
+                activeSection ===
+                item.id;
 
-              <span className="navbar-link-number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
 
-              <span className="navbar-link-label">
-                {item.label}
-              </span>
+              return (
 
-              <span className="navbar-link-dot"></span>
+                <button
+                  key={item.id}
+                  type="button"
+                  className={`navbar-link ${
+                    isActive
+                      ? "navbar-link-active"
+                      : ""
+                  }`}
+                  onClick={() =>
+                    handleNavigation(
+                      item.href
+                    )
+                  }
+                >
 
-            </a>
+                  <span>
+                    {item.label}
+                  </span>
 
-          ))}
+
+                  {isActive && (
+                    <span
+                      className="navbar-active-dot"
+                      aria-hidden="true"
+                    />
+                  )}
+
+                </button>
+
+              );
+
+            }
+          )}
 
         </nav>
 
 
         {/* =================================================
-            RIGHT STATUS
+            RIGHT SIDE ACTIONS
         ================================================= */}
 
-        <div className="navbar-status">
+        <div className="navbar-actions">
 
-          <span className="navbar-status-dot"></span>
 
-          <span>
-            OPEN TO OPPORTUNITIES
-          </span>
+          {/* STATUS */}
+
+          <div
+            className="navbar-status"
+            aria-label="Currently open to opportunities"
+          >
+
+            <span
+              className="navbar-status-dot"
+              aria-hidden="true"
+            />
+
+            <span className="navbar-status-label">
+              OPEN TO OPPORTUNITIES
+            </span>
+
+          </div>
+
+
+          {/* CONTACT */}
+
+          <button
+            type="button"
+            className="navbar-contact"
+            onClick={() =>
+              handleNavigation(
+                "#contact"
+              )
+            }
+          >
+
+            <span>
+              Let's connect
+            </span>
+
+            <FiArrowUpRight />
+
+          </button>
+
+
+          {/* MOBILE MENU */}
+
+          <button
+            type="button"
+            className="navbar-menu-button"
+            onClick={() =>
+              setIsMenuOpen(
+                (previous) =>
+                  !previous
+              )
+            }
+            aria-label={
+              isMenuOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
+            }
+            aria-expanded={
+              isMenuOpen
+            }
+            aria-controls="mobile-navigation"
+          >
+
+            {isMenuOpen ? (
+              <FiX />
+            ) : (
+              <FiMenu />
+            )}
+
+          </button>
 
         </div>
-
-
-        {/* =================================================
-            MOBILE BUTTON
-        ================================================= */}
-
-        <button
-          type="button"
-          className={`
-            navbar-menu-button
-            ${menuOpen ? "menu-active" : ""}
-          `}
-          aria-label={
-            menuOpen
-              ? "Close navigation"
-              : "Open navigation"
-          }
-          aria-expanded={menuOpen}
-          onClick={() =>
-            setMenuOpen((previous) => !previous)
-          }
-        >
-
-          <span></span>
-          <span></span>
-
-        </button>
 
       </div>
 
 
-      {/* =================================================
+      {/* ===================================================
           MOBILE NAVIGATION
-      ================================================= */}
+      =================================================== */}
 
       <div
-        className={`
-          navbar-mobile
-          ${menuOpen ? "navbar-mobile-visible" : ""}
-        `}
+        id="mobile-navigation"
+        className={`mobile-navigation ${
+          isMenuOpen
+            ? "mobile-navigation-open"
+            : ""
+        }`}
       >
 
-        <div className="navbar-mobile-inner">
+        <div className="mobile-navigation-inner">
 
-          <span className="navbar-mobile-label">
-            NAVIGATION
-          </span>
 
+          {/* MOBILE HEADER */}
+
+          <div className="mobile-navigation-header">
+
+            <div>
+
+              <span>
+                NAVIGATION
+              </span>
+
+              <strong>
+                MOHD ABDULLAH
+              </strong>
+
+            </div>
+
+
+            <div className="mobile-navigation-status">
+
+              <FiActivity />
+
+              <span>
+                ONLINE
+              </span>
+
+            </div>
+
+          </div>
+
+
+          {/* MOBILE LINKS */}
 
           <nav
-            className="navbar-mobile-links"
+            className="mobile-navigation-links"
             aria-label="Mobile navigation"
           >
 
-            {navItems.map((item, index) => (
+            {navigation.map(
+              (
+                item,
+                index
+              ) => {
 
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className={`
-                  navbar-mobile-link
-                  ${
-                    activeSection === item.id
-                      ? "mobile-link-active"
-                      : ""
-                  }
-                `}
-                onClick={handleNavigation}
-              >
+                const isActive =
+                  activeSection ===
+                  item.id;
 
-                <span>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
 
-                <strong>
-                  {item.label}
-                </strong>
+                return (
 
-                <b>
-                  ↗
-                </b>
+                  <button
+                    type="button"
+                    key={item.id}
+                    className={`mobile-navigation-link ${
+                      isActive
+                        ? "mobile-navigation-link-active"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleNavigation(
+                        item.href
+                      )
+                    }
+                  >
 
-              </a>
+                    <span className="mobile-link-number">
+                      {String(
+                        index + 1
+                      ).padStart(
+                        2,
+                        "0"
+                      )}
+                    </span>
 
-            ))}
+
+                    <span className="mobile-link-label">
+                      {item.label}
+                    </span>
+
+
+                    <FiArrowUpRight />
+
+                  </button>
+
+                );
+
+              }
+            )}
 
           </nav>
 
 
-          <div className="navbar-mobile-footer">
+          {/* MOBILE FOOTER */}
+
+          <div className="mobile-navigation-footer">
 
             <span>
-              MOHAMMAD ABDULLAH
+              DATA SCIENCE
             </span>
 
+            <i />
+
             <span>
-              ASPIRING DATA SCIENTIST
+              SOFTWARE
+            </span>
+
+            <i />
+
+            <span>
+              AI
             </span>
 
           </div>
@@ -319,7 +633,10 @@ function Navbar() {
       </div>
 
     </header>
+
   );
+
 }
+
 
 export default Navbar;

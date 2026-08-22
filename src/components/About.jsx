@@ -1,6 +1,8 @@
 import "./About.css";
 
+
 function About() {
+
   return (
     <section
       className="about-section"
@@ -9,9 +11,10 @@ function About() {
 
       <div className="container">
 
-        {/* =================================================
-            HEADER
-        ================================================= */}
+
+        {/* =====================================================
+            SECTION HEADER
+        ===================================================== */}
 
         <div
           className="about-header"
@@ -21,20 +24,22 @@ function About() {
           <div className="about-heading">
 
             <span className="section-label">
-              About Me
+              ABOUT ME
             </span>
 
             <h2>
-              Learning.
+
+              Data.
               <br />
 
               <span className="gradient-text">
-                Building.
+                Thinking.
               </span>
 
               <br />
 
-              Growing.
+              Building.
+
             </h2>
 
           </div>
@@ -47,10 +52,10 @@ function About() {
             </span>
 
             <p>
-              I'm Mohammad Abdullah, a Computer Science
-              Engineering student building a strong
-              foundation in programming, data analytics
-              and data science.
+              I'm Mohd Abdullah, a Computer Science &
+              Engineering student aspiring to build a career
+              in Data Science, with a strong interest in Data
+              Analytics and practical software development.
             </p>
 
           </div>
@@ -58,16 +63,17 @@ function About() {
         </div>
 
 
-        {/* =================================================
+
+        {/* =====================================================
             MAIN CONTENT
-        ================================================= */}
+        ===================================================== */}
 
         <div className="about-layout">
 
 
-          {/* =================================================
-              LEFT — JOURNEY
-          ================================================= */}
+          {/* ===================================================
+              LEFT — PROFESSIONAL JOURNEY
+          =================================================== */}
 
           <div
             className="about-journey"
@@ -76,10 +82,14 @@ function About() {
 
             <div className="about-line">
 
-              <span></span>
+              <span />
 
             </div>
 
+
+            {/* =================================================
+                01 — FOUNDATION
+            ================================================= */}
 
             <div className="about-step">
 
@@ -94,19 +104,24 @@ function About() {
                 </small>
 
                 <h3>
-                  Computer Science
+                  Computer Science & Engineering
                 </h3>
 
                 <p>
-                  Building strong fundamentals through
-                  programming, problem solving, databases
-                  and core computer science concepts.
+                  Building a strong technical foundation through
+                  programming, problem solving, databases,
+                  software development and core computer science
+                  concepts.
                 </p>
 
               </div>
 
             </div>
 
+
+            {/* =================================================
+                02 — DATA ANALYTICS
+            ================================================= */}
 
             <div className="about-step">
 
@@ -117,23 +132,27 @@ function About() {
               <div>
 
                 <small>
-                  CURRENT FOCUS
+                  STRONG AREA
                 </small>
 
                 <h3>
-                  Data & Analytics
+                  Data Analytics
                 </h3>
 
                 <p>
                   Working with Python, SQL and analytical
-                  thinking to understand data and turn it
-                  into meaningful insights.
+                  tools to explore data, identify patterns and
+                  turn raw information into meaningful insights.
                 </p>
 
               </div>
 
             </div>
 
+
+            {/* =================================================
+                03 — DATA SCIENCE
+            ================================================= */}
 
             <div className="about-step">
 
@@ -144,17 +163,50 @@ function About() {
               <div>
 
                 <small>
-                  NEXT DIRECTION
+                  CAREER DIRECTION
                 </small>
 
                 <h3>
-                  Data Science
+                  Aspiring Data Scientist
                 </h3>
 
                 <p>
-                  Strengthening machine learning and
-                  statistical foundations while building
-                  practical, data-driven projects.
+                  Developing deeper knowledge in statistics,
+                  machine learning and data-driven problem
+                  solving while building practical projects
+                  that strengthen my understanding of the field.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            {/* =================================================
+                04 — WEB DEVELOPMENT
+            ================================================= */}
+
+            <div className="about-step">
+
+              <span className="about-step-number">
+                04
+              </span>
+
+              <div>
+
+                <small>
+                  ADDITIONAL STRENGTH
+                </small>
+
+                <h3>
+                  Web Development
+                </h3>
+
+                <p>
+                  Hands-on experience building web applications
+                  has given me a practical understanding of
+                  frontend, backend and software development
+                  workflows.
                 </p>
 
               </div>
@@ -164,19 +216,25 @@ function About() {
           </div>
 
 
-          {/* =================================================
-              RIGHT — PROFILE
-          ================================================= */}
+
+          {/* ===================================================
+              RIGHT — PROFILE CARD
+          =================================================== */}
 
           <div
             className="about-profile"
             data-reveal-item
           >
 
+
+            {/* =================================================
+                PROFILE HEADER
+            ================================================= */}
+
             <div className="about-profile-top">
 
               <span>
-                PROFILE
+                PROFESSIONAL PROFILE
               </span>
 
               <span>
@@ -185,6 +243,11 @@ function About() {
 
             </div>
 
+
+
+            {/* =================================================
+                PROFILE IDENTITY
+            ================================================= */}
 
             <div className="about-profile-content">
 
@@ -195,11 +258,11 @@ function About() {
               <div>
 
                 <h3>
-                  Mohammad Abdullah
+                  Mohd Abdullah
                 </h3>
 
                 <p>
-                  B.Tech CSE Student
+                  Computer Science & Engineering
                   <br />
                   Aspiring Data Scientist
                 </p>
@@ -209,25 +272,18 @@ function About() {
             </div>
 
 
+
+            {/* =================================================
+                PROFILE DETAILS
+            ================================================= */}
+
             <div className="about-profile-grid">
 
-              <div>
-
-                <span>
-                  EDUCATION
-                </span>
-
-                <strong>
-                  B.Tech CSE
-                </strong>
-
-              </div>
-
 
               <div>
 
                 <span>
-                  FOCUS
+                  PRIMARY FIELD
                 </span>
 
                 <strong>
@@ -240,11 +296,11 @@ function About() {
               <div>
 
                 <span>
-                  CURRENT
+                  STRONG AREA
                 </span>
 
                 <strong>
-                  Learning & Building
+                  Data Analytics
                 </strong>
 
               </div>
@@ -253,28 +309,53 @@ function About() {
               <div>
 
                 <span>
-                  APPROACH
+                  ADDITIONAL
                 </span>
 
                 <strong>
-                  Practical
+                  Web Development
                 </strong>
 
               </div>
 
+
+              <div>
+
+                <span>
+                  FOUNDATION
+                </span>
+
+                <strong>
+                  B.Tech CSE
+                </strong>
+
+              </div>
+
+
             </div>
 
+
+
+            {/* =================================================
+                PROFILE FOOTER
+            ================================================= */}
 
             <div className="about-profile-footer">
 
               <span>
-                CURIOUS BY NATURE
+                DATA
               </span>
 
-              <span className="about-pulse"></span>
+              <span className="about-pulse" />
 
               <span>
-                BUILDING WITH PURPOSE
+                ANALYTICS
+              </span>
+
+              <span className="about-pulse" />
+
+              <span>
+                SOFTWARE
               </span>
 
             </div>
@@ -284,9 +365,10 @@ function About() {
         </div>
 
 
-        {/* =================================================
-            BOTTOM STATEMENT
-        ================================================= */}
+
+        {/* =====================================================
+            APPROACH
+        ===================================================== */}
 
         <div
           className="about-statement"
@@ -294,14 +376,14 @@ function About() {
         >
 
           <span className="section-label">
-            My Approach
+            MY APPROACH
           </span>
 
           <p>
-            I believe the best way to learn technology
-            is to build with it — starting with strong
-            fundamentals, solving practical problems and
-            continuously improving through every project.
+            I believe the strongest way to learn technology is
+            to build with it. I focus on understanding the
+            fundamentals, working on practical problems and
+            continuously improving through real projects.
           </p>
 
           <span className="about-statement-arrow">
@@ -310,10 +392,12 @@ function About() {
 
         </div>
 
+
       </div>
 
     </section>
   );
 }
+
 
 export default About;

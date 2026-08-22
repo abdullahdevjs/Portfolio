@@ -5,79 +5,58 @@ import ScrollProgress from "./components/ScrollProgress";
 
 import Hero from "./components/Hero";
 import About from "./components/About";
+import WhatIDo from "./components/WhatIDo";
+import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-import useScrollReveal from "./hooks/useScrollReveal";
-
 
 function App() {
-
-  /* =====================================================
-     SCROLL REVEAL
-  ====================================================== */
-
-  useScrollReveal();
-
-
   return (
-
     <div className="app">
 
       {/* =================================================
-          SCROLL PROGRESS
+          GLOBAL NAVIGATION
       ================================================= */}
+
+      <Navbar />
 
       <ScrollProgress />
 
 
       {/* =================================================
-          NAVBAR
-      ================================================= */}
-
-      <Navbar />
-
-
-      {/* =================================================
-          MAIN CONTENT
+          MAIN PORTFOLIO
       ================================================= */}
 
       <main>
 
-        {/* ===============================================
-            HERO
-        =============================================== */}
-
+        {/* 01 — INTRO */}
         <Hero />
 
 
-        {/* ===============================================
-            ABOUT
-        =============================================== */}
-
+        {/* 02 — ABOUT */}
         <About />
 
 
-        {/* ===============================================
-            SKILLS
-        =============================================== */}
+        {/* 03 — CAPABILITIES */}
+        <WhatIDo />
 
+
+        {/* 04 — EXPERIENCE */}
+        <Experience />
+
+
+        {/* 05 — SKILLS */}
         <Skills />
 
 
-        {/* ===============================================
-            PROJECTS
-        =============================================== */}
-
+        {/* 06 — PROJECTS */}
         <Projects />
 
 
-        {/* ===============================================
-            CONTACT
-        =============================================== */}
-
+        {/* 07 — CONTACT */}
         <Contact />
 
       </main>
@@ -90,7 +69,6 @@ function App() {
       <Footer />
 
     </div>
-
   );
 }
 
